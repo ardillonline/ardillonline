@@ -1,23 +1,24 @@
+<!-- ========================= -->
+<!-- OPERACIÓN BELLOTA V6.0  -->
+<!-- ULTRA PREMIUM EXPERIENCE -->
+<!-- ========================= -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Rodrigo "Ardillón" Rodríguez 🌰🐿️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Operación Bellota 🌰 | Rodrigo "Ardillón"</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
-    --verde:#7CB342;
-    --amarillo:#FDD835;
-    --naranja:#FF9800;
-    --marron:#5D4037;
-    --crema:#FFFBEA;
-    --blanco:#ffffff;
-}
+/* ========================================= */
+/* RESET */
+/* ========================================= */
 
 *{
     margin:0;
@@ -25,425 +26,920 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Fredoka', sans-serif;
-    background:
-    radial-gradient(circle at top left, rgba(255,152,0,.15), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(124,179,66,.15), transparent 30%),
-    var(--crema);
-
+    background:#fffdf3;
     overflow-x:hidden;
-    color:var(--marron);
+    color:#3e2c22;
 }
 
-/* ===== FONDO ANIMADO ===== */
+/* ========================================= */
+/* VARIABLES */
+/* ========================================= */
+
+:root{
+
+    --verde:#74b62d;
+    --verde2:#95d840;
+
+    --amarillo:#ffd93b;
+    --amarillo2:#ffef96;
+
+    --naranja:#ff9800;
+    --naranja2:#ffb53c;
+
+    --marron:#5c3b28;
+    --marron2:#8d5b3e;
+
+    --blanco:#ffffff;
+
+    --shadow:
+    0 10px 40px rgba(0,0,0,.08);
+
+}
+
+/* ========================================= */
+/* FONDO CINEMÁTICO */
+/* ========================================= */
 
 body::before{
-    content:"🌰 🌰 🌰 🌰 🌰";
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left, rgba(255,152,0,.12), transparent 20%),
+    radial-gradient(circle at top right, rgba(255,217,59,.18), transparent 25%),
+    radial-gradient(circle at bottom left, rgba(116,182,45,.12), transparent 20%),
+    radial-gradient(circle at bottom right, rgba(255,152,0,.1), transparent 20%);
+
+    z-index:-3;
+}
+
+body::after{
+    content:"🌰 🌰 🌰 🌰 🌰 🌰 🌰";
     position:fixed;
     top:-100px;
-    left:-20%;
-    width:140%;
-    font-size:40px;
-    opacity:.08;
-    animation:floatBg 25s linear infinite;
-    pointer-events:none;
+    left:-10%;
+    width:120%;
+    opacity:.04;
+    font-size:60px;
+    animation:falling 18s linear infinite;
+    z-index:-2;
 }
 
-@keyframes floatBg{
+@keyframes falling{
+
     from{
-        transform:translateY(0) rotate(0deg);
+        transform:
+        translateY(-100px)
+        rotate(0deg);
     }
+
     to{
-        transform:translateY(120vh) rotate(360deg);
+        transform:
+        translateY(120vh)
+        rotate(360deg);
     }
+
 }
 
-/* ===== CONTENEDOR ===== */
+/* ========================================= */
+/* CONTAINER */
+/* ========================================= */
 
 .container{
-    width:min(1200px, 92%);
+    width:min(1300px, 92%);
     margin:auto;
-    padding:40px 0 80px;
 }
 
-/* ===== HERO ===== */
+/* ========================================= */
+/* HERO */
+/* ========================================= */
 
 .hero{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     position:relative;
-    background:white;
-    border-radius:40px;
-    padding:70px 30px;
-    text-align:center;
+
+    padding:60px 0;
+
+}
+
+.hero-card{
+
+    width:100%;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.92),
+        rgba(255,255,255,.78)
+    );
+
+    backdrop-filter:blur(14px);
+
+    border-radius:50px;
+
+    padding:90px 60px;
+
+    position:relative;
+
     overflow:hidden;
 
-    border:6px solid var(--verde);
+    border:2px solid rgba(255,255,255,.7);
 
     box-shadow:
-    0 15px 0 var(--amarillo),
-    0 30px 60px rgba(0,0,0,.12);
+    0 20px 80px rgba(0,0,0,.1);
 
-    animation:heroFloat 5s ease-in-out infinite;
 }
 
-@keyframes heroFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
-}
+/* ANILLO GIRATORIO PREMIUM */
 
-/* EFECTO GIRATORIO HEADER */
+.hero-card::before{
 
-.hero::before{
     content:"";
+
     position:absolute;
-    width:500px;
-    height:500px;
+
+    width:900px;
+    height:900px;
 
     background:
     conic-gradient(
+        from 0deg,
         transparent,
-        rgba(255,152,0,.4),
+        rgba(255,217,59,.6),
         transparent,
-        rgba(124,179,66,.4),
+        rgba(255,152,0,.5),
+        transparent,
+        rgba(116,182,45,.5),
         transparent
     );
 
-    top:-220px;
-    left:50%;
-    transform:translateX(-50%);
     border-radius:50%;
 
-    animation:spin 8s linear infinite;
+    top:-420px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    animation:spin 12s linear infinite;
+
 }
 
-.hero::after{
+.hero-card::after{
+
     content:"";
+
     position:absolute;
-    inset:8px;
-    background:white;
-    border-radius:35px;
+
+    inset:6px;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.95),
+        rgba(255,252,240,.94)
+    );
+
+    border-radius:45px;
+
 }
 
 @keyframes spin{
+
     from{
-        transform:translateX(-50%) rotate(0deg);
+        transform:
+        translateX(-50%)
+        rotate(0deg);
     }
+
     to{
-        transform:translateX(-50%) rotate(360deg);
+        transform:
+        translateX(-50%)
+        rotate(360deg);
     }
+
 }
 
 .hero-content{
     position:relative;
-    z-index:2;
+    z-index:10;
+    text-align:center;
 }
 
 .logo{
-    font-size:90px;
+
+    font-size:120px;
+
     display:inline-block;
-    animation:shake 3s ease-in-out infinite;
+
+    filter:drop-shadow(0 15px 20px rgba(0,0,0,.15));
+
+    animation:float 4s ease-in-out infinite;
+
 }
 
-@keyframes shake{
-    0%,100%{ transform:rotate(0deg); }
-    25%{ transform:rotate(-8deg); }
-    50%{ transform:rotate(8deg); }
-    75%{ transform:rotate(-5deg); }
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-18px);
+    }
+
 }
 
 .hero h1{
+
     font-family:'Luckiest Guy', cursive;
-    font-size:clamp(3rem, 8vw, 5rem);
+
+    font-size:clamp(4rem, 10vw, 7rem);
+
+    color:var(--marron);
 
     margin-top:10px;
 
-    color:var(--marron);
+    line-height:1;
 
     text-shadow:
-    4px 4px 0 var(--amarillo),
-    8px 8px 0 rgba(255,152,0,.7);
+    5px 5px 0 var(--amarillo),
+    10px 10px 0 rgba(255,152,0,.5);
+
 }
 
-.hero p{
-    margin-top:20px;
-    font-size:1.4rem;
-    font-weight:600;
-    color:var(--verde);
+.hero-sub{
+
+    margin-top:25px;
+
+    font-size:1.5rem;
+
+    color:#5f5f5f;
+
+    max-width:900px;
+
+    margin-inline:auto;
+
+    line-height:1.8;
+
 }
 
-/* ===== BADGES ===== */
+/* ========================================= */
+/* STATUS BADGES */
+/* ========================================= */
 
 .badges{
+
+    margin-top:50px;
+
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:15px;
-    margin-top:35px;
+    gap:18px;
+
 }
 
 .badge{
-    background:rgba(255,152,0,.1);
-    color:var(--marron);
 
-    border:2px solid rgba(255,152,0,.2);
-
-    padding:12px 20px;
-    border-radius:999px;
-    font-weight:700;
-
-    backdrop-filter:blur(5px);
-}
-
-/* ===== GALERÍA ===== */
-
-.section-title{
-    text-align:center;
-    margin:80px 0 50px;
-    font-size:3rem;
-    font-family:'Luckiest Guy', cursive;
-    color:var(--marron);
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:white;
-    border-radius:30px;
-    overflow:hidden;
-    position:relative;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-    transition:.45s;
-}
-
-.card:hover{
-    transform:
-    translateY(-12px)
-    rotate(1deg)
-    scale(1.02);
-
-    box-shadow:0 25px 45px rgba(0,0,0,.15);
-}
-
-.card img{
-    width:100%;
-    height:350px;
-    object-fit:cover;
-}
-
-.card-content{
-    padding:20px;
-}
-
-.card-content p{
-    font-size:1.1rem;
-    font-weight:600;
-}
-
-/* ===== DONACIONES ===== */
-
-.donaciones{
-    margin-top:90px;
-
-    background:linear-gradient(
-    135deg,
-    #ff9800,
-    #ffb300
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.9),
+        rgba(255,255,255,.75)
     );
 
-    color:white;
+    border:1px solid rgba(255,255,255,.7);
 
-    border-radius:40px;
+    backdrop-filter:blur(8px);
 
-    padding:70px 30px;
+    padding:16px 26px;
 
-    text-align:center;
-
-    position:relative;
-    overflow:hidden;
-
-    box-shadow:
-    0 15px 0 #a45d00,
-    0 30px 60px rgba(0,0,0,.15);
-}
-
-.donaciones::before{
-    content:"🌰";
-    position:absolute;
-    font-size:220px;
-    opacity:.08;
-    top:-40px;
-    left:-30px;
-    transform:rotate(-20deg);
-}
-
-.donaciones h2{
-    position:relative;
-    z-index:2;
-
-    font-size:3.5rem;
-    font-family:'Luckiest Guy', cursive;
-
-    text-shadow:4px 4px 0 rgba(0,0,0,.2);
-}
-
-.donaciones p{
-    position:relative;
-    z-index:2;
-
-    max-width:800px;
-    margin:25px auto;
-
-    font-size:1.2rem;
-    line-height:1.7;
-}
-
-/* ===== BOTONES ===== */
-
-.botones{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-top:40px;
-}
-
-.btn{
-    text-decoration:none;
-    border:none;
-
-    padding:18px 35px;
     border-radius:999px;
 
-    font-size:1.1rem;
     font-weight:700;
 
-    cursor:pointer;
+    box-shadow:
+    0 10px 20px rgba(0,0,0,.06);
 
     transition:.3s;
 
+}
+
+.badge:hover{
+
+    transform:
+    translateY(-6px)
+    scale(1.05);
+
+}
+
+/* ========================================= */
+/* OPERATION BELLOTA */
+/* ========================================= */
+
+.operation{
+
     position:relative;
+
+    margin-top:120px;
+
+    border-radius:55px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        145deg,
+        #ff9800,
+        #ffb300,
+        #ff9800
+    );
+
+    box-shadow:
+    0 25px 80px rgba(255,152,0,.25);
+
+}
+
+/* TEXTURA INTERNA */
+
+.operation::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 20%),
+    radial-gradient(circle at 80% 40%, rgba(255,255,255,.1), transparent 20%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.08), transparent 25%);
+
+}
+
+/* BELLOTAS GIGANTES */
+
+.operation::after{
+
+    content:"🌰";
+
+    position:absolute;
+
+    right:-40px;
+    bottom:-80px;
+
+    font-size:320px;
+
+    opacity:.08;
+
+    transform:rotate(-15deg);
+
+}
+
+.operation-inner{
+
+    position:relative;
+    z-index:3;
+
+    padding:100px 60px;
+}
+
+/* ========================================= */
+/* TITULOS */
+/* ========================================= */
+
+.operation-top{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.operation-left{
+    flex:1;
+}
+
+.mission-tag{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    background:rgba(255,255,255,.15);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    padding:14px 22px;
+
+    border-radius:999px;
+
+    color:white;
+
+    font-weight:700;
+
+    backdrop-filter:blur(8px);
+
+    margin-bottom:30px;
+}
+
+.operation h2{
+
+    font-family:'Luckiest Guy', cursive;
+
+    font-size:clamp(4rem, 8vw, 6rem);
+
+    line-height:1;
+
+    color:white;
+
+    text-shadow:
+    5px 5px 0 rgba(0,0,0,.15);
+
+}
+
+.operation p{
+
+    margin-top:30px;
+
+    max-width:850px;
+
+    color:white;
+
+    font-size:1.35rem;
+
+    line-height:1.9;
+
+}
+
+/* ========================================= */
+/* DONATION PANEL */
+/* ========================================= */
+
+.donation-panel{
+
+    margin-top:70px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(260px,1fr));
+
+    gap:28px;
+
+}
+
+.donation-card{
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.24),
+        rgba(255,255,255,.12)
+    );
+
+    border:1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:35px;
+
+    padding:35px;
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.donation-card:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+    box-shadow:
+    0 25px 40px rgba(0,0,0,.15);
+
+}
+
+.donation-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    top:-80px;
+    right:-80px;
+}
+
+.card-icon{
+
+    font-size:50px;
+
+    margin-bottom:20px;
+}
+
+.card-title{
+
+    font-size:1.7rem;
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.card-price{
+
+    font-size:3rem;
+    font-weight:700;
+
+    margin:18px 0;
+}
+
+.card-desc{
+
+    opacity:.92;
+    line-height:1.7;
+}
+
+/* ========================================= */
+/* PREMIUM BUTTONS */
+/* ========================================= */
+
+.buttons{
+
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+
+    margin-top:70px;
+}
+
+.btn{
+
+    position:relative;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    padding:22px 38px;
+
+    border-radius:22px;
+
+    text-decoration:none;
+
+    font-size:1.15rem;
+    font-weight:700;
+
+    transition:.35s;
 
     overflow:hidden;
 }
 
 .btn::before{
+
     content:"";
+
     position:absolute;
     inset:0;
-    background:rgba(255,255,255,.2);
 
-    transform:translateX(-100%);
-    transition:.4s;
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+
+    transform:translateX(-120%);
+
+    transition:.6s;
 }
 
 .btn:hover::before{
-    transform:translateX(100%);
+    transform:translateX(120%);
 }
 
-.btn:hover{
-    transform:translateY(-6px) scale(1.04);
-}
+.btn-main{
 
-.btn-whatsapp{
-    background:#25D366;
-    color:white;
-
-    box-shadow:
-    0 8px 0 #168c45;
-}
-
-.btn-whatsapp:hover{
-    box-shadow:
-    0 14px 0 #168c45;
-}
-
-.btn-dorado{
     background:white;
+
     color:#ff9800;
 
     box-shadow:
-    0 8px 0 #d5d5d5;
+    0 12px 30px rgba(255,255,255,.22);
+
 }
 
-/* ===== CTA ===== */
+.btn-main:hover{
 
-.cta{
-    margin-top:80px;
+    transform:
+    translateY(-8px)
+    scale(1.04);
 
-    background:var(--marron);
+}
+
+.btn-whatsapp{
+
+    background:#25D366;
 
     color:white;
 
-    border-radius:40px;
+    box-shadow:
+    0 12px 30px rgba(37,211,102,.35);
 
-    padding:60px 20px;
+}
+
+.btn-whatsapp:hover{
+
+    transform:
+    translateY(-8px)
+    scale(1.04);
+
+}
+
+/* ========================================= */
+/* LIVE STATUS */
+/* ========================================= */
+
+.live-status{
+
+    margin-top:70px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.live-box{
+
+    flex:1;
+
+    min-width:220px;
+
+    background:
+    rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    color:white;
+
+    backdrop-filter:blur(8px);
+}
+
+.live-number{
+
+    font-size:2.6rem;
+    font-weight:700;
+}
+
+.live-label{
+
+    margin-top:10px;
+    opacity:.9;
+}
+
+/* ========================================= */
+/* GALLERY */
+/* ========================================= */
+
+.gallery{
+
+    margin-top:130px;
+}
+
+.section-title{
 
     text-align:center;
+
+    font-family:'Luckiest Guy', cursive;
+
+    font-size:4rem;
+
+    color:var(--marron);
+
+    margin-bottom:60px;
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+}
+
+.card{
+
+    background:white;
+
+    border-radius:35px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.08);
+
+    transition:.4s;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-14px)
+    rotate(.8deg);
+
+}
+
+.card img{
+
+    width:100%;
+    height:380px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card-content p{
+
+    font-size:1.1rem;
+    font-weight:600;
+}
+
+/* ========================================= */
+/* CTA */
+/* ========================================= */
+
+.cta{
+
+    margin-top:120px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #4b2e20,
+        #6d412d
+    );
+
+    color:white;
+
+    border-radius:45px;
+
+    padding:80px 40px;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.cta::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:
+    radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);
+
+    top:-250px;
+    right:-250px;
 }
 
 .cta h3{
-    font-size:2.3rem;
-    margin-bottom:15px;
+
+    position:relative;
+    z-index:2;
+
+    font-size:3rem;
+
     color:var(--amarillo);
+
+    margin-bottom:20px;
 }
 
-.numero{
-    margin-top:25px;
+.cta p{
 
-    display:inline-block;
+    position:relative;
+    z-index:2;
 
-    background:rgba(255,255,255,.08);
+    font-size:1.2rem;
+}
 
-    padding:18px 28px;
+.number{
 
-    border-radius:20px;
+    position:relative;
+    z-index:2;
+
+    margin-top:35px;
+
+    display:inline-flex;
+    align-items:center;
+    gap:15px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    padding:22px 35px;
+
+    border-radius:25px;
 
     font-size:2rem;
     font-weight:700;
 
-    letter-spacing:2px;
+    backdrop-filter:blur(8px);
 }
 
-/* ===== FOOTER ===== */
+/* ========================================= */
+/* FOOTER */
+/* ========================================= */
 
 footer{
+
+    padding:60px 20px 40px;
+
     text-align:center;
-    padding:50px 20px 20px;
-    opacity:.7;
+
+    color:#8a7d73;
+
+    font-size:1rem;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
 
 @media(max-width:768px){
 
-    .hero{
-        padding:50px 20px;
+    .hero-card{
+        padding:60px 25px;
     }
 
-    .logo{
-        font-size:65px;
+    .operation-inner{
+        padding:70px 25px;
+    }
+
+    .operation h2{
+        font-size:3.5rem;
     }
 
     .section-title{
+        font-size:3rem;
+    }
+
+    .cta h3{
         font-size:2.2rem;
     }
 
-    .donaciones h2{
-        font-size:2.5rem;
+    .number{
+        font-size:1.2rem;
     }
 
-    .numero{
-        font-size:1.3rem;
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
     }
 
 }
@@ -455,122 +951,299 @@ footer{
 
 <div class="container">
 
-    <!-- HERO -->
+<!-- HERO -->
 
-    <header class="hero">
+<section class="hero">
 
-        <div class="hero-content">
+<div class="hero-card">
 
-            <div class="logo">🐿️</div>
+<div class="hero-content">
 
-            <h1>Rodrigo "Ardillón"</h1>
+<div class="logo">🐿️</div>
 
-            <p>El recolector oficial de bellotas premium 🌰</p>
+<h1>
+OPERACIÓN<br>
+BELLOTA
+</h1>
 
-            <div class="badges">
-                <div class="badge">🌰 Energía Ardillística</div>
-                <div class="badge">🐿️ Madriguera VIP</div>
-                <div class="badge">🔥 Nivel Legendario</div>
-            </div>
+<p class="hero-sub">
+El centro oficial de abastecimiento táctico del legendario
+<strong>Rodrigo “Ardillón” Rodríguez</strong>.
+Cada donación fortalece la madriguera,
+incrementa las reservas de bellotas y mantiene viva la energía ardillística.
+</p>
 
-        </div>
+<div class="badges">
 
-    </header>
+<div class="badge">
+🌰 Bellota Certified
+</div>
 
-    <!-- GALERÍA -->
+<div class="badge">
+🔥 Nivel Épico
+</div>
 
-    <h2 class="section-title">
-        El Álbum del Ardillón
-    </h2>
+<div class="badge">
+🐿️ Madriguera Premium
+</div>
 
-    <section class="grid">
-
-        <div class="card">
-            <img src="https://i.postimg.cc/5tVSzN2L/Whats-App-Image-2026-05-19-at-12-13-07-PM.jpg">
-            <div class="card-content">
-                <p>Coordinando operaciones secretas de bellotas 📱🌰</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.postimg.cc/YCfmJNtF/Whats-App-Image-2026-05-19-at-12-14-35-PM.jpg">
-            <div class="card-content">
-                <p>Modo “Madriguera Chill” activado 🏠✨</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.postimg.cc/x1J0WMMN/Whats-App-Image-2026-05-19-at-12-18-49-PM.jpg">
-            <div class="card-content">
-                <p>Una nueva evolución del Ardillón 🐿️⚡</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.postimg.cc/90ghkQfx/Whats-App-Image-2026-05-19-at-12-18-49-PM222.jpg">
-            <div class="card-content">
-                <p>“Necesito más bellotas…” 🌰👀</p>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- DONACIONES -->
-
-    <section class="donaciones">
-
-        <h2>¡Operación Bellota! 🌰</h2>
-
-        <p>
-            Ayuda al Ardillón a mantener abastecida la madriguera.
-            Cada aporte desbloquea más energía, más memes y más contenido legendario.
-        </p>
-
-        <div class="botones">
-
-            <!-- CAMBIA EL NÚMERO POR EL REAL -->
-            <a
-            href="https://wa.me/56945450443?text=Hola%20Ardillón%20🐿️%20quiero%20enviarte%20una%20donación%20🌰"
-            target="_blank"
-            class="btn btn-whatsapp">
-                Donar por WhatsApp 💚
-            </a>
-
-            <a
-            href="https://wa.me/56945450443?text=Hola%20Ardillón%20🌟%20quiero%20mandarte%20una%20SUPER%20BELLOTA"
-            target="_blank"
-            class="btn btn-dorado">
-                Súper Bellota 🌟
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- CTA -->
-
-    <section class="cta">
-
-        <h3>📞 Contacto Oficial del Ardillón</h3>
-
-        <p>
-            ¿Quieres enviar una bellota real?
-            Escríbele directamente aquí:
-        </p>
-
-        <div class="numero">
-            +56 9 4545 0443
-        </div>
-
-    </section>
+<div class="badge">
+⚡ Operación Activa
+</div>
 
 </div>
 
+</div>
+
+</div>
+
+</section>
+
+<!-- OPERATION BELLOTA -->
+
+<section class="operation">
+
+<div class="operation-inner">
+
+<div class="operation-top">
+
+<div class="operation-left">
+
+<div class="mission-tag">
+🛰️ MISIÓN GLOBAL ACTIVA
+</div>
+
+<h2>
+FINANCIA<br>
+LA MADRIGUERA
+</h2>
+
+<p>
+Las reservas de bellotas están bajando rápidamente.
+Cada aporte ayuda a mantener la operación funcionando:
+contenido, memes, energía, hidratación táctica y expansión oficial
+de la infraestructura ardillística.
+</p>
+
+</div>
+
+</div>
+
+<!-- DONATION CARDS -->
+
+<div class="donation-panel">
+
+<div class="donation-card">
+
+<div class="card-icon">🌰</div>
+
+<div class="card-title">
+Bellota Básica
+</div>
+
+<div class="card-price">
+$1.000
+</div>
+
+<div class="card-desc">
+Aporte inicial para mantener la energía del Ardillón estable.
+Ideal para verdaderos aliados de la madriguera.
+</div>
+
+</div>
+
+<div class="donation-card">
+
+<div class="card-icon">🌟</div>
+
+<div class="card-title">
+Bellota Dorada
+</div>
+
+<div class="card-price">
+$5.000
+</div>
+
+<div class="card-desc">
+Desbloquea apoyo premium y aumenta significativamente las reservas tácticas.
+</div>
+
+</div>
+
+<div class="donation-card">
+
+<div class="card-icon">🚀</div>
+
+<div class="card-title">
+Bellota Nuclear
+</div>
+
+<div class="card-price">
+$10.000+
+</div>
+
+<div class="card-desc">
+Nivel legendario.
+Acceso honorífico al consejo supremo de la madriguera.
+</div>
+
+</div>
+
+</div>
+
+<!-- BUTTONS -->
+
+<div class="buttons">
+
+<a
+href="https://wa.me/56945450443?text=Hola%20Ardillón%20🐿️%20quiero%20aportar%20a%20la%20Operación%20Bellota%20🌰"
+target="_blank"
+class="btn btn-whatsapp">
+
+💚 Donar Directamente por WhatsApp
+
+</a>
+
+<a
+href="https://wa.me/56945450443?text=Hola%20Ardillón%20🌟%20quiero%20hacer%20una%20SUPER%20DONACIÓN"
+target="_blank"
+class="btn btn-main">
+
+🌰 Activar Súper Bellota
+
+</a>
+
+</div>
+
+<!-- LIVE STATUS -->
+
+<div class="live-status">
+
+<div class="live-box">
+
+<div class="live-number">
+98%
+</div>
+
+<div class="live-label">
+Nivel de hambre de bellotas
+</div>
+
+</div>
+
+<div class="live-box">
+
+<div class="live-number">
+24/7
+</div>
+
+<div class="live-label">
+Operación ardillística activa
+</div>
+
+</div>
+
+<div class="live-box">
+
+<div class="live-number">
+∞
+</div>
+
+<div class="live-label">
+Capacidad de almacenar bellotas
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="gallery">
+
+<h2 class="section-title">
+Momentos Históricos del Ardillón
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<img src="https://i.postimg.cc/5tVSzN2L/Whats-App-Image-2026-05-19-at-12-13-07-PM.jpg">
+
+<div class="card-content">
+
+<p>
+📱 Coordinando abastecimientos secretos de bellotas.
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.postimg.cc/YCfmJNtF/Whats-App-Image-2026-05-19-at-12-14-35-PM.jpg">
+
+<div class="card-content">
+
+<p>
+🏠 Descansando estratégicamente dentro de la madriguera.
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.postimg.cc/x1J0WMMN/Whats-App-Image-2026-05-19-at-12-18-49-PM.jpg">
+
+<div class="card-content">
+
+<p>
+⚡ El Ardillón alcanzando su forma definitiva.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h3>
+📡 CONTACTO DIRECTO
+</h3>
+
+<p>
+La central oficial de comunicaciones de la Operación Bellota está disponible.
+</p>
+
+<div class="number">
+💬 +56 9 4545 0443
+</div>
+
+</section>
+
 <footer>
-    <p>
-        Página oficial de fans de Rodrigo "Ardillón" Rodríguez 🌰🐿️
-    </p>
+
+<p>
+Operación Bellota © 2026 — Rodrigo "Ardillón" Rodríguez 🌰
+</p>
+
 </footer>
+
+</div>
 
 </body>
 </html>
