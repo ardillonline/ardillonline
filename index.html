@@ -1,1726 +1,1353 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Operación Bellota 🌰 | Rodrigo "Ardillón"</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 <style>
-
-/* ================================================= */
-/* RESET */
-/* ================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Fredoka', sans-serif;
-    background:#fffdf3;
-    overflow-x:hidden;
-    color:#3e2c22;
-}
-
-/* ================================================= */
-/* VARIABLES */
-/* ================================================= */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Fredoka',sans-serif;background:#fffdf3;overflow-x:hidden;color:#3e2c22;cursor:none;}
 
 :root{
-
-    --verde:#74b62d;
-    --verde2:#95d840;
-
-    --amarillo:#ffd93b;
-    --naranja:#ff9800;
-
-    --marron:#5c3b28;
-
-    --shadow:
-    0 20px 50px rgba(0,0,0,.08);
-
+  --verde:#74b62d;--verde2:#95d840;
+  --amarillo:#ffd93b;--amarillo2:#ffef96;
+  --naranja:#ff9800;--naranja2:#ffb53c;
+  --marron:#5c3b28;--marron2:#8d5b3e;
+  --blanco:#ffffff;
 }
 
-/* ================================================= */
+/* CURSOR PERSONALIZADO */
+#cursor{
+  position:fixed;width:40px;height:40px;
+  font-size:30px;pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:transform 0.1s;
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,0.2));
+}
+#cursor-trail{
+  position:fixed;width:20px;height:20px;
+  font-size:16px;pointer-events:none;z-index:99998;
+  transform:translate(-50%,-50%);opacity:0.5;
+  transition:all 0.15s ease;
+}
+
 /* FONDO */
-/* ================================================= */
-
 body::before{
-
-    content:"";
-
-    position:fixed;
-    inset:0;
-
-    background:
-    radial-gradient(circle at top left, rgba(255,152,0,.12), transparent 20%),
-    radial-gradient(circle at top right, rgba(255,217,59,.16), transparent 25%),
-    radial-gradient(circle at bottom left, rgba(116,182,45,.12), transparent 20%);
-
-    z-index:-3;
-
+  content:"";position:fixed;inset:0;
+  background:
+    radial-gradient(circle at top left,rgba(255,152,0,.12),transparent 20%),
+    radial-gradient(circle at top right,rgba(255,217,59,.18),transparent 25%),
+    radial-gradient(circle at bottom left,rgba(116,182,45,.12),transparent 20%),
+    radial-gradient(circle at bottom right,rgba(255,152,0,.1),transparent 20%);
+  z-index:-3;
 }
 
-/* ================================================= */
-/* BELLOTAS FLOTANTES */
-/* ================================================= */
-
-.floating-acorns{
-
-    position:fixed;
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:1;
-}
-
-.floating-acorns span{
-
-    position:absolute;
-
-    font-size:42px;
-
-    opacity:.10;
-
-    animation:floatAround linear infinite;
-}
-
-.floating-acorns span:nth-child(1){
-    left:5%;
-    top:20%;
-    animation-duration:16s;
-}
-
-.floating-acorns span:nth-child(2){
-    left:80%;
-    top:12%;
-    animation-duration:20s;
-}
-
-.floating-acorns span:nth-child(3){
-    left:15%;
-    top:72%;
-    animation-duration:18s;
-}
-
-.floating-acorns span:nth-child(4){
-    left:90%;
-    top:60%;
-    animation-duration:14s;
-}
-
-.floating-acorns span:nth-child(5){
-    left:55%;
-    top:40%;
-    animation-duration:22s;
-}
-
-.floating-acorns span:nth-child(6){
-    left:72%;
-    top:82%;
-    animation-duration:17s;
-}
-
-@keyframes floatAround{
-
-    0%{
-        transform:
-        translateY(0)
-        rotate(0deg);
-    }
-
-    50%{
-        transform:
-        translateY(-30px)
-        rotate(15deg);
-    }
-
-    100%{
-        transform:
-        translateY(0)
-        rotate(0deg);
-    }
-
-}
-
-/* ================================================= */
-/* HEADER */
-/* ================================================= */
-
-.top-header{
-
-    position:fixed;
-
-    top:18px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:min(1280px, 94%);
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    gap:20px;
-
-    padding:18px 28px;
-
-    background:
-    rgba(255,255,255,.75);
-
-    backdrop-filter:blur(16px);
-
-    border-radius:24px;
-
-    border:1px solid rgba(255,255,255,.6);
-
-    box-shadow:
-    0 10px 35px rgba(0,0,0,.08);
-
-    z-index:9999;
-}
-
-.header-logo{
-
-    font-size:1.15rem;
-    font-weight:700;
-
-    color:var(--marron);
-}
-
-.header-nav{
-
-    display:flex;
-    gap:28px;
-}
-
-.header-nav a{
-
-    text-decoration:none;
-
-    color:var(--marron);
-
-    font-weight:600;
-
-    transition:.3s;
-}
-
-.header-nav a:hover{
-
-    color:var(--naranja);
-
-    transform:translateY(-2px);
-}
-
-.header-cta{
-
-    text-decoration:none;
-
-    background:
-    linear-gradient(
-        135deg,
-        #25D366,
-        #1db954
-    );
-
-    color:white;
-
-    padding:15px 24px;
-
-    border-radius:16px;
-
-    font-weight:700;
-
-    box-shadow:
-    0 10px 25px rgba(37,211,102,.35);
-
-    transition:.3s;
-}
-
-.header-cta:hover{
-
-    transform:
-    translateY(-4px)
-    scale(1.04);
-
-}
-
-/* ================================================= */
 /* CONTAINER */
-/* ================================================= */
+.container{width:min(1300px,92%);margin:auto;}
 
-.container{
-
-    width:min(1300px, 92%);
-    margin:auto;
-}
-
-/* ================================================= */
-/* HERO */
-/* ================================================= */
-
-.hero{
-
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding-top:120px;
-    padding-bottom:60px;
-}
-
+/* ===================== HERO ===================== */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:60px 0;}
 .hero-card{
-
-    width:100%;
-
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:50px;
-
-    padding:90px 50px;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.92),
-        rgba(255,255,255,.78)
-    );
-
-    backdrop-filter:blur(14px);
-
-    box-shadow:
-    0 20px 80px rgba(0,0,0,.08);
-
+  width:100%;
+  background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,255,255,.78));
+  backdrop-filter:blur(14px);
+  border-radius:50px;padding:90px 60px;
+  position:relative;overflow:hidden;
+  border:2px solid rgba(255,255,255,.7);
+  box-shadow:0 20px 80px rgba(0,0,0,.1);
 }
-
 .hero-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:900px;
-    height:900px;
-
-    border-radius:50%;
-
-    top:-420px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    background:
-    conic-gradient(
-        transparent,
-        rgba(255,217,59,.5),
-        transparent,
-        rgba(255,152,0,.45),
-        transparent,
-        rgba(116,182,45,.4),
-        transparent
-    );
-
-    animation:spin 12s linear infinite;
+  content:"";position:absolute;width:900px;height:900px;
+  background:conic-gradient(from 0deg,transparent,rgba(255,217,59,.6),transparent,rgba(255,152,0,.5),transparent,rgba(116,182,45,.5),transparent);
+  border-radius:50%;top:-420px;left:50%;transform:translateX(-50%);
+  animation:spin 12s linear infinite;
 }
-
 .hero-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:6px;
-
-    border-radius:44px;
-
-    background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,.95),
-        rgba(255,252,240,.92)
-    );
-
+  content:"";position:absolute;inset:6px;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,252,240,.94));
+  border-radius:45px;
 }
+@keyframes spin{from{transform:translateX(-50%) rotate(0deg);}to{transform:translateX(-50%) rotate(360deg);}}
 
-@keyframes spin{
-
-    from{
-        transform:
-        translateX(-50%)
-        rotate(0deg);
-    }
-
-    to{
-        transform:
-        translateX(-50%)
-        rotate(360deg);
-    }
-
-}
-
-.hero-content{
-
-    position:relative;
-    z-index:2;
-
-    text-align:center;
-}
-
-.logo{
-
-    font-size:120px;
-
-    animation:float 4s ease-in-out infinite;
-
-    filter:
-    drop-shadow(0 15px 25px rgba(0,0,0,.12));
-}
-
-@keyframes float{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-15px);
-    }
-
-}
+.hero-content{position:relative;z-index:10;text-align:center;}
+.logo{font-size:120px;display:inline-block;filter:drop-shadow(0 15px 20px rgba(0,0,0,.15));animation:float 4s ease-in-out infinite;cursor:pointer;}
+.logo:hover{animation:wiggle 0.5s ease-in-out;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+@keyframes wiggle{0%,100%{transform:rotate(0deg) scale(1);}25%{transform:rotate(-15deg) scale(1.2);}75%{transform:rotate(15deg) scale(1.2);}}
 
 .hero h1{
-
-    font-family:'Luckiest Guy', cursive;
-
-    font-size:clamp(4rem, 10vw, 7rem);
-
-    color:var(--marron);
-
-    line-height:1;
-
-    margin-top:10px;
-
-    text-shadow:
-    5px 5px 0 var(--amarillo),
-    10px 10px 0 rgba(255,152,0,.35);
-
+  font-family:'Luckiest Guy',cursive;
+  font-size:clamp(4rem,10vw,7rem);
+  color:var(--marron);margin-top:10px;line-height:1;
+  text-shadow:5px 5px 0 var(--amarillo),10px 10px 0 rgba(255,152,0,.5);
 }
+.hero-sub{margin-top:25px;font-size:1.5rem;color:#5f5f5f;max-width:900px;margin-inline:auto;line-height:1.8;}
 
-.hero-sub{
-
-    margin-top:30px;
-
-    font-size:1.35rem;
-
-    line-height:1.9;
-
-    color:#5f5f5f;
-
-    max-width:850px;
-
-    margin-inline:auto;
+/* NIVEL ARDILLÍSTICO */
+.nivel-container{
+  margin-top:35px;
+  background:rgba(255,255,255,0.8);
+  border-radius:30px;padding:25px 35px;
+  border:2px solid rgba(255,152,0,0.3);
+  max-width:700px;margin-inline:auto;
 }
-
-/* ================================================= */
-/* BADGES */
-/* ================================================= */
-
-.badges{
-
-    margin-top:50px;
-
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-
-    gap:18px;
+.nivel-label{font-size:1rem;font-weight:700;color:#888;margin-bottom:10px;text-transform:uppercase;letter-spacing:2px;}
+.nivel-bar-wrap{background:#f0e8d8;border-radius:999px;height:28px;overflow:hidden;position:relative;}
+.nivel-bar{
+  height:100%;border-radius:999px;
+  background:linear-gradient(90deg,#ff9800,#ffd93b,#74b62d);
+  width:0%;transition:width 1.5s cubic-bezier(0.4,0,0.2,1);
+  position:relative;overflow:hidden;
 }
+.nivel-bar::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+  animation:shimmer 2s infinite;
+}
+@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+.nivel-texto{font-size:1.1rem;font-weight:700;color:var(--naranja);margin-top:10px;}
 
+.badges{margin-top:40px;display:flex;justify-content:center;flex-wrap:wrap;gap:18px;}
 .badge{
-
-    background:
-    rgba(255,255,255,.75);
-
-    border:1px solid rgba(255,255,255,.5);
-
-    backdrop-filter:blur(8px);
-
-    padding:16px 24px;
-
-    border-radius:999px;
-
-    font-weight:700;
-
-    box-shadow:
-    0 8px 25px rgba(0,0,0,.05);
-
-    transition:.3s;
+  background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.75));
+  border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(8px);
+  padding:16px 26px;border-radius:999px;font-weight:700;
+  box-shadow:0 10px 20px rgba(0,0,0,.06);transition:.3s;cursor:pointer;
 }
+.badge:hover{transform:translateY(-6px) scale(1.05);}
 
-.badge:hover{
-
-    transform:
-    translateY(-5px)
-    scale(1.04);
+/* ===================== CONTADOR BELLOTAS ===================== */
+.bellota-counter{
+  margin-top:40px;
+  background:linear-gradient(135deg,#5c3b28,#8d5b3e);
+  border-radius:35px;padding:35px 40px;
+  color:white;text-align:center;
+  box-shadow:0 20px 50px rgba(92,59,40,0.3);
+  position:relative;overflow:hidden;
 }
-
-/* ================================================= */
-/* BELLOMETRO */
-/* ================================================= */
-
-.bellometro-section{
-
-    padding:40px 0 120px;
+.bellota-counter::before{
+  content:"🌰";position:absolute;right:-20px;bottom:-30px;
+  font-size:150px;opacity:0.1;
 }
-
-.bellometro-container{
-
-    display:grid;
-
-    grid-template-columns:
-    1.2fr 1fr;
-
-    gap:70px;
-
-    align-items:center;
-
-    padding:70px;
-
-    border-radius:50px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.92),
-        rgba(255,255,255,.72)
-    );
-
-    backdrop-filter:blur(14px);
-
-    box-shadow:
-    0 20px 80px rgba(0,0,0,.08);
-
+.counter-label{font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;opacity:0.7;margin-bottom:10px;}
+.counter-number{
+  font-family:'Luckiest Guy',cursive;font-size:5rem;
+  color:#ffd93b;
+  text-shadow:3px 3px 0 rgba(0,0,0,0.2);
+  transition:all 0.3s;
 }
+.counter-sub{font-size:1rem;opacity:0.8;margin-top:5px;}
 
-.bellometro-container::before{
-
-    content:"🌰";
-
-    position:absolute;
-
-    right:-40px;
-    bottom:-70px;
-
-    font-size:260px;
-
-    opacity:.05;
-}
-
-.meter-tag{
-
-    display:inline-flex;
-
-    background:
-    rgba(255,152,0,.12);
-
-    color:var(--naranja);
-
-    padding:14px 22px;
-
-    border-radius:999px;
-
-    font-weight:700;
-
-    margin-bottom:28px;
-}
-
-.bellometro-left h2{
-
-    font-family:'Luckiest Guy', cursive;
-
-    font-size:4rem;
-
-    line-height:1;
-
-    color:var(--marron);
-
-    margin-bottom:25px;
-}
-
-.bellometro-left p{
-
-    font-size:1.18rem;
-
-    line-height:1.9;
-
-    color:#5f5f5f;
-}
-
-/* ================================================= */
-/* STATS */
-/* ================================================= */
-
-.meter-stats{
-
-    margin-top:40px;
-
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.stat-box{
-
-    flex:1;
-
-    min-width:180px;
-
-    background:white;
-
-    border-radius:24px;
-
-    padding:25px;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.05);
-}
-
-.stat-number{
-
-    font-size:2.2rem;
-    font-weight:700;
-
-    color:var(--naranja);
-}
-
-.stat-label{
-
-    margin-top:10px;
-
-    color:#666;
-}
-
-/* ================================================= */
-/* CIRCULAR METER */
-/* ================================================= */
-
-.bellometro-right{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.meter-circle{
-
-    width:360px;
-    height:360px;
-
-    border-radius:50%;
-
-    background:
-    conic-gradient(
-        #ff9800 0%,
-        #ffd93b 57%,
-        rgba(255,255,255,.2) 57%
-    );
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    position:relative;
-
-    animation:pulse 4s infinite;
-}
-
-@keyframes pulse{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.03);
-    }
-
-}
-
-.meter-glow{
-
-    position:absolute;
-
-    inset:-20px;
-
-    border-radius:50%;
-
-    background:
-    radial-gradient(
-        circle,
-        rgba(255,152,0,.25),
-        transparent 70%
-    );
-
-    z-index:-1;
-}
-
-.meter-inner{
-
-    width:270px;
-    height:270px;
-
-    border-radius:50%;
-
-    background:
-    linear-gradient(
-        145deg,
-        white,
-        #fff6e7
-    );
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    box-shadow:
-    inset 0 10px 25px rgba(0,0,0,.05);
-}
-
-.meter-percent{
-
-    font-size:5rem;
-    font-weight:700;
-
-    color:var(--naranja);
-
-    line-height:1;
-}
-
-.meter-text{
-
-    margin-top:10px;
-
-    letter-spacing:4px;
-
-    color:#777;
-}
-
-/* ================================================= */
-/* OPERACIÓN BELLOTA */
-/* ================================================= */
-
+/* ===================== OPERATION ===================== */
 .operation{
-
-    margin-top:30px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:50px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #ff9800,
-        #ffb300,
-        #ff9800
-    );
-
-    box-shadow:
-    0 25px 80px rgba(255,152,0,.25);
+  position:relative;margin-top:120px;border-radius:55px;overflow:hidden;
+  background:linear-gradient(145deg,#ff9800,#ffb300,#ff9800);
+  box-shadow:0 25px 80px rgba(255,152,0,.25);
 }
-
 .operation::before{
-
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,.16), transparent 20%),
-    radial-gradient(circle at 80% 40%, rgba(255,255,255,.1), transparent 20%);
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.18),transparent 20%),
+    radial-gradient(circle at 80% 40%,rgba(255,255,255,.1),transparent 20%),
+    radial-gradient(circle at 50% 80%,rgba(255,255,255,.08),transparent 25%);
 }
-
-.operation::after{
-
-    content:"🌰";
-
-    position:absolute;
-
-    right:-40px;
-    bottom:-70px;
-
-    font-size:300px;
-
-    opacity:.08;
-
-    transform:rotate(-15deg);
+.operation::after{content:"🌰";position:absolute;right:-40px;bottom:-80px;font-size:320px;opacity:.08;transform:rotate(-15deg);}
+.operation-inner{position:relative;z-index:3;padding:100px 60px;}
+.operation-top{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.operation-left{flex:1;}
+.mission-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+  padding:14px 22px;border-radius:999px;color:white;font-weight:700;
+  backdrop-filter:blur(8px);margin-bottom:30px;
 }
-
-.operation-inner{
-
-    position:relative;
-    z-index:2;
-
-    padding:90px 60px;
-
-    color:white;
-}
-
 .operation h2{
-
-    font-family:'Luckiest Guy', cursive;
-
-    font-size:5rem;
-
-    line-height:1;
-
-    text-shadow:
-    5px 5px 0 rgba(0,0,0,.15);
+  font-family:'Luckiest Guy',cursive;font-size:clamp(4rem,8vw,6rem);
+  line-height:1;color:white;text-shadow:5px 5px 0 rgba(0,0,0,.15);
 }
+.operation p{margin-top:30px;max-width:850px;color:white;font-size:1.35rem;line-height:1.9;}
 
-.operation p{
-
-    margin-top:30px;
-
-    max-width:850px;
-
-    font-size:1.25rem;
-
-    line-height:1.9;
-}
-
-/* ================================================= */
 /* DONATION CARDS */
-/* ================================================= */
-
-.donation-panel{
-
-    margin-top:60px;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(260px,1fr));
-
-    gap:25px;
-}
-
+.donation-panel{margin-top:70px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;}
 .donation-card{
-
-    background:
-    rgba(255,255,255,.14);
-
-    border:1px solid rgba(255,255,255,.2);
-
-    backdrop-filter:blur(8px);
-
-    border-radius:35px;
-
-    padding:35px;
-
-    transition:.35s;
+  background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.12));
+  border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(10px);
+  border-radius:35px;padding:35px;color:white;
+  position:relative;overflow:hidden;transition:.4s;cursor:pointer;
 }
+.donation-card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 25px 40px rgba(0,0,0,.15);}
+.donation-card::before{content:"";position:absolute;width:180px;height:180px;background:rgba(255,255,255,.08);border-radius:50%;top:-80px;right:-80px;}
+.card-icon{font-size:50px;margin-bottom:20px;}
+.card-title{font-size:1.7rem;font-weight:700;margin-bottom:10px;}
+.card-price{font-size:3rem;font-weight:700;margin:18px 0;}
+.card-desc{opacity:.92;line-height:1.7;}
 
-.donation-card:hover{
-
-    transform:
-    translateY(-10px)
-    scale(1.03);
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.12);
-}
-
-.card-icon{
-
-    font-size:52px;
-
-    margin-bottom:20px;
-}
-
-.card-title{
-
-    font-size:1.6rem;
-    font-weight:700;
-}
-
-.card-price{
-
-    font-size:3rem;
-    font-weight:700;
-
-    margin:18px 0;
-}
-
-.card-desc{
-
-    line-height:1.7;
-}
-
-/* ================================================= */
-/* BUTTONS */
-/* ================================================= */
-
-.buttons{
-
-    margin-top:60px;
-
-    display:flex;
-    flex-wrap:wrap;
-
-    gap:22px;
-}
-
+/* BOTONES */
+.buttons{display:flex;gap:25px;flex-wrap:wrap;margin-top:70px;}
 .btn{
-
-    text-decoration:none;
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:12px;
-
-    padding:22px 38px;
-
-    border-radius:22px;
-
-    font-size:1.1rem;
-    font-weight:700;
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.35s;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  padding:22px 38px;border-radius:22px;text-decoration:none;
+  font-size:1.15rem;font-weight:700;transition:.35s;overflow:hidden;cursor:pointer;
+  font-family:'Fredoka',sans-serif;border:none;
 }
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-120%);transition:.6s;}
+.btn:hover::before{transform:translateX(120%);}
+.btn-main{background:white;color:#ff9800;box-shadow:0 12px 30px rgba(255,255,255,.22);}
+.btn-main:hover{transform:translateY(-8px) scale(1.04);}
+.btn-whatsapp{background:#25D366;color:white;box-shadow:0 12px 30px rgba(37,211,102,.35);}
+.btn-whatsapp:hover{transform:translateY(-8px) scale(1.04);}
+.btn-game{background:linear-gradient(135deg,#7c3aed,#a855f7);color:white;box-shadow:0 12px 30px rgba(124,58,237,.35);}
+.btn-game:hover{transform:translateY(-8px) scale(1.04);}
 
-.btn::before{
-
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,.35),
-        transparent
-    );
-
-    transform:translateX(-120%);
-
-    transition:.6s;
-}
-
-.btn:hover::before{
-
-    transform:translateX(120%);
-}
-
-.btn-main{
-
-    background:white;
-
-    color:#ff9800;
-}
-
-.btn-whatsapp{
-
-    background:#25D366;
-
-    color:white;
-}
-
-.btn:hover{
-
-    transform:
-    translateY(-6px)
-    scale(1.04);
-}
-
-/* ================================================= */
 /* LIVE STATUS */
-/* ================================================= */
-
-.live-status{
-
-    margin-top:60px;
-
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
+.live-status{margin-top:70px;display:flex;flex-wrap:wrap;gap:20px;}
 .live-box{
+  flex:1;min-width:220px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);
+  border-radius:28px;padding:28px;color:white;backdrop-filter:blur(8px);
+  transition:0.3s;cursor:pointer;
+}
+.live-box:hover{background:rgba(255,255,255,.2);transform:scale(1.03);}
+.live-number{font-size:2.6rem;font-weight:700;}
+.live-label{margin-top:10px;opacity:.9;}
 
-    flex:1;
-
-    min-width:220px;
-
-    background:
-    rgba(255,255,255,.12);
-
-    border:1px solid rgba(255,255,255,.18);
-
-    border-radius:28px;
-
-    padding:28px;
-
-    backdrop-filter:blur(8px);
+/* ===================== MINIJUEGO BELLOTA ===================== */
+.game-section{
+  margin-top:120px;
+  background:linear-gradient(135deg,#1a0a3e,#2d1060,#1a0a3e);
+  border-radius:55px;padding:80px 60px;
+  position:relative;overflow:hidden;
+  box-shadow:0 25px 80px rgba(26,10,62,.4);
+}
+.game-section::before{
+  content:"⭐🌟✨💫";position:absolute;
+  top:20px;left:50%;transform:translateX(-50%);
+  font-size:30px;opacity:0.15;letter-spacing:20px;
+}
+.game-title{
+  font-family:'Luckiest Guy',cursive;font-size:3.5rem;
+  color:#ffd93b;text-align:center;margin-bottom:15px;
+  text-shadow:3px 3px 0 rgba(0,0,0,0.3);
+}
+.game-subtitle{text-align:center;color:rgba(255,255,255,0.8);font-size:1.2rem;margin-bottom:40px;}
+.game-wrapper{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+.game-canvas-wrap{
+  position:relative;
+  background:rgba(255,255,255,0.05);
+  border:2px solid rgba(255,255,255,0.15);
+  border-radius:30px;overflow:hidden;
+}
+#gameCanvas{display:block;cursor:none;}
+.game-overlay{
+  position:absolute;inset:0;
+  background:rgba(26,10,62,0.9);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:28px;transition:0.3s;
+}
+.game-overlay.hidden{opacity:0;pointer-events:none;}
+.game-over-title{font-family:'Luckiest Guy',cursive;font-size:3rem;color:#ffd93b;margin-bottom:10px;}
+.game-over-score{font-size:1.5rem;color:white;margin-bottom:25px;}
+.btn-start{
+  background:linear-gradient(135deg,#ffd93b,#ff9800);
+  color:#3e2c22;padding:18px 45px;border-radius:999px;
+  border:none;font-family:'Fredoka',sans-serif;font-size:1.3rem;font-weight:700;
+  cursor:pointer;transition:0.3s;box-shadow:0 10px 30px rgba(255,152,0,0.4);
+}
+.btn-start:hover{transform:translateY(-5px) scale(1.05);}
+.game-stats{color:white;}
+.stat-box{
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  border-radius:20px;padding:20px 25px;margin-bottom:15px;text-align:center;
+}
+.stat-num{font-family:'Luckiest Guy',cursive;font-size:2.5rem;color:#ffd93b;}
+.stat-lbl{font-size:0.9rem;opacity:0.7;text-transform:uppercase;letter-spacing:1px;margin-top:5px;}
+.combo-display{
+  background:rgba(255,152,0,0.2);border:1px solid rgba(255,152,0,0.4);
+  border-radius:20px;padding:20px 25px;margin-top:15px;text-align:center;
+  transition:all 0.3s;
+}
+.combo-num{font-family:'Luckiest Guy',cursive;font-size:2rem;color:#ff9800;}
+.high-score-box{
+  background:linear-gradient(135deg,rgba(255,217,59,0.2),rgba(255,152,0,0.2));
+  border:1px solid rgba(255,217,59,0.4);border-radius:20px;padding:20px 25px;
+  margin-top:15px;text-align:center;
+}
+.hs-num{font-family:'Luckiest Guy',cursive;font-size:1.8rem;color:#ffd93b;}
+.game-instructions{
+  margin-top:25px;background:rgba(255,255,255,0.05);
+  border-radius:15px;padding:15px 20px;color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.8;
 }
 
-.live-number{
-
-    font-size:2.5rem;
-    font-weight:700;
+/* ===================== LOGROS ===================== */
+.logros-section{margin-top:120px;}
+.section-title{text-align:center;font-family:'Luckiest Guy',cursive;font-size:4rem;color:var(--marron);margin-bottom:15px;}
+.section-sub{text-align:center;color:#888;font-size:1.2rem;margin-bottom:50px;}
+.logros-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
+.logro-card{
+  background:white;border-radius:25px;padding:25px 20px;text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);transition:0.4s;position:relative;overflow:hidden;
+  border:2px solid transparent;cursor:pointer;
 }
-
-.live-label{
-
-    margin-top:10px;
-
-    opacity:.92;
+.logro-card.bloqueado{filter:grayscale(1);opacity:0.5;}
+.logro-card.desbloqueado{border-color:#ffd93b;}
+.logro-card.desbloqueado::before{
+  content:"✓";position:absolute;top:10px;right:12px;
+  background:#74b62d;color:white;font-size:12px;font-weight:700;
+  width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  line-height:22px;
 }
+.logro-card:hover:not(.bloqueado){transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.1);}
+.logro-emoji{font-size:45px;margin-bottom:12px;}
+.logro-name{font-weight:700;font-size:1rem;color:var(--marron);margin-bottom:5px;}
+.logro-desc{font-size:0.85rem;color:#888;line-height:1.5;}
 
-/* ================================================= */
-/* GALLERY */
-/* ================================================= */
-
-.gallery{
-
-    margin-top:120px;
+/* ===================== GIRAR LA RUEDA ===================== */
+.ruleta-section{
+  margin-top:120px;
+  background:linear-gradient(135deg,#fff5e6,#fffdf3);
+  border-radius:55px;padding:80px 60px;
+  border:3px solid rgba(255,152,0,0.2);
 }
-
-.section-title{
-
-    text-align:center;
-
-    font-family:'Luckiest Guy', cursive;
-
-    font-size:4rem;
-
-    color:var(--marron);
-
-    margin-bottom:60px;
+.ruleta-wrap{display:flex;gap:60px;flex-wrap:wrap;align-items:center;justify-content:center;}
+.ruleta-canvas-wrap{position:relative;}
+#rouletteCanvas{border-radius:50%;box-shadow:0 20px 60px rgba(0,0,0,0.15);display:block;}
+.ruleta-arrow{
+  position:absolute;top:50%;right:-25px;transform:translateY(-50%);
+  font-size:35px;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.2));
 }
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
-
-    gap:35px;
+.ruleta-info{max-width:400px;}
+.ruleta-result{
+  background:white;border-radius:25px;padding:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);margin-top:25px;
+  text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;border:2px solid rgba(255,152,0,0.2);
 }
-
-.card{
-
-    background:white;
-
-    border-radius:35px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.08);
-
-    transition:.35s;
+.ruleta-result-emoji{font-size:45px;margin-bottom:10px;}
+.ruleta-result-text{font-size:1.3rem;font-weight:700;color:var(--marron);}
+.ruleta-result-sub{font-size:1rem;color:#888;margin-top:5px;}
+.btn-spin{
+  background:linear-gradient(135deg,#ff9800,#ffd93b);
+  color:#3e2c22;padding:20px 50px;border-radius:999px;
+  border:none;font-family:'Fredoka',sans-serif;font-size:1.3rem;font-weight:700;
+  cursor:pointer;transition:0.3s;box-shadow:0 10px 30px rgba(255,152,0,0.35);
+  display:block;margin:0 auto;
 }
+.btn-spin:hover{transform:translateY(-5px) scale(1.05);}
+.btn-spin:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
 
-.card:hover{
+/* ===================== GALERÍA ===================== */
+.gallery{margin-top:130px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:35px;}
+.card{background:white;border-radius:35px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.08);transition:.4s;}
+.card:hover{transform:translateY(-14px) rotate(.8deg);}
+.card img{width:100%;height:380px;object-fit:cover;}
+.card-content{padding:25px;}
+.card-content p{font-size:1.1rem;font-weight:600;}
 
-    transform:
-    translateY(-12px)
-    rotate(.8deg);
+/* ===================== CONTADOR DONACIONES ===================== */
+.donaciones-live{
+  margin-top:70px;
+  background:linear-gradient(135deg,#74b62d,#95d840);
+  border-radius:40px;padding:50px 60px;color:white;text-align:center;
+  position:relative;overflow:hidden;
+  box-shadow:0 20px 60px rgba(116,182,45,0.3);
 }
+.donaciones-live::before{content:"💰";position:absolute;right:-20px;bottom:-20px;font-size:180px;opacity:0.08;}
+.don-title{font-family:'Luckiest Guy',cursive;font-size:2.5rem;margin-bottom:25px;}
+.don-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:700px;margin:0 auto;}
+.don-box{background:rgba(255,255,255,0.15);border-radius:25px;padding:25px 20px;border:1px solid rgba(255,255,255,0.2);}
+.don-num{font-family:'Luckiest Guy',cursive;font-size:2.5rem;color:#ffd93b;}
+.don-lbl{font-size:0.9rem;opacity:0.8;margin-top:5px;text-transform:uppercase;letter-spacing:1px;}
 
-.card img{
-
-    width:100%;
-    height:380px;
-
-    object-fit:cover;
-
-    display:block;
+/* PROGRESO MADRIGUERA */
+.madriguera-progress{
+  margin-top:40px;
+  background:rgba(255,255,255,0.2);border-radius:25px;padding:30px 35px;
 }
-
-.card-content{
-
-    padding:24px;
+.mad-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;}
+.mad-label{font-size:1.1rem;font-weight:700;color:white;}
+.mad-pct{font-size:1.3rem;font-weight:700;color:#ffd93b;}
+.mad-bar-wrap{background:rgba(255,255,255,0.2);border-radius:999px;height:24px;overflow:hidden;}
+.mad-bar{
+  height:100%;border-radius:999px;
+  background:linear-gradient(90deg,#ffd93b,#fff176);
+  width:0%;transition:width 2s cubic-bezier(0.4,0,0.2,1);
+  position:relative;overflow:hidden;
 }
+.mad-bar::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);animation:shimmer 2s infinite;}
+.mad-meta{display:flex;justify-content:space-between;margin-top:10px;color:rgba(255,255,255,0.7);font-size:0.9rem;}
 
-.card-content p{
-
-    font-size:1.08rem;
-    font-weight:600;
-}
-
-/* ================================================= */
-/* CTA */
-/* ================================================= */
-
+/* ===================== CTA ===================== */
 .cta{
-
-    margin-top:120px;
-
-    border-radius:45px;
-
-    padding:80px 40px;
-
-    text-align:center;
-
-    background:
-    linear-gradient(
-        135deg,
-        #4b2e20,
-        #6d412d
-    );
-
-    color:white;
-
-    position:relative;
-
-    overflow:hidden;
+  margin-top:120px;
+  background:linear-gradient(135deg,#4b2e20,#6d412d);
+  color:white;border-radius:45px;padding:80px 40px;text-align:center;
+  position:relative;overflow:hidden;
 }
-
-.cta::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    background:
-    radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);
-
-    top:-250px;
-    right:-250px;
-}
-
-.cta h3{
-
-    position:relative;
-    z-index:2;
-
-    font-size:3rem;
-
-    color:var(--amarillo);
-
-    margin-bottom:20px;
-}
-
-.cta p{
-
-    position:relative;
-    z-index:2;
-
-    font-size:1.2rem;
-}
-
+.cta::before{content:"";position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);top:-250px;right:-250px;}
+.cta h3{position:relative;z-index:2;font-size:3rem;color:var(--amarillo);margin-bottom:20px;}
+.cta p{position:relative;z-index:2;font-size:1.2rem;}
 .number{
-
-    position:relative;
-    z-index:2;
-
-    margin-top:35px;
-
-    display:inline-flex;
-    align-items:center;
-    gap:12px;
-
-    background:
-    rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.12);
-
-    padding:22px 34px;
-
-    border-radius:25px;
-
-    font-size:2rem;
-    font-weight:700;
-
-    backdrop-filter:blur(8px);
+  position:relative;z-index:2;margin-top:35px;
+  display:inline-flex;align-items:center;gap:15px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);
+  padding:22px 35px;border-radius:25px;font-size:2rem;font-weight:700;
+  backdrop-filter:blur(8px);
 }
 
-/* ================================================= */
-/* FOOTER */
-/* ================================================= */
+/* ===================== FOOTER ===================== */
+footer{padding:60px 20px 40px;text-align:center;color:#8a7d73;font-size:1rem;}
 
-footer{
-
-    padding:60px 20px 40px;
-
-    text-align:center;
-
-    color:#8a7d73;
+/* ===================== CONFETTI ===================== */
+.confetti-piece{
+  position:fixed;width:10px;height:10px;
+  pointer-events:none;z-index:99999;border-radius:2px;
+  animation:confetti-fall 3s ease-in forwards;
+}
+@keyframes confetti-fall{
+  0%{transform:translateY(-10px) rotate(0deg);opacity:1;}
+  100%{transform:translateY(100vh) rotate(720deg);opacity:0;}
 }
 
-/* ================================================= */
-/* RESPONSIVE */
-/* ================================================= */
-
-@media(max-width:950px){
-
-    .bellometro-container{
-
-        grid-template-columns:1fr;
-
-        padding:50px 25px;
-    }
-
-    .operation-inner{
-
-        padding:70px 25px;
-    }
-
-    .operation h2{
-
-        font-size:3.5rem;
-    }
-
-    .bellometro-left h2{
-
-        font-size:3rem;
-    }
-
-    .section-title{
-
-        font-size:3rem;
-    }
-
-    .meter-circle{
-
-        width:290px;
-        height:290px;
-    }
-
-    .meter-inner{
-
-        width:220px;
-        height:220px;
-    }
-
-    .meter-percent{
-
-        font-size:4rem;
-    }
-
-    .header-nav{
-
-        display:none;
-    }
-
+/* ===================== FLOATING BELLOTAS ===================== */
+.float-bellota{
+  position:fixed;pointer-events:none;z-index:99998;
+  font-size:24px;animation:float-up 1.5s ease-out forwards;
+}
+@keyframes float-up{
+  0%{transform:translateY(0) scale(1);opacity:1;}
+  100%{transform:translateY(-120px) scale(0.5);opacity:0;}
 }
 
-@media(max-width:600px){
-
-    .hero-card{
-
-        padding:70px 25px;
-    }
-
-    .buttons{
-
-        flex-direction:column;
-    }
-
-    .btn{
-
-        width:100%;
-    }
-
-    .hero h1{
-
-        font-size:4rem;
-    }
-
-    .cta h3{
-
-        font-size:2.1rem;
-    }
-
-    .number{
-
-        font-size:1.2rem;
-    }
-
-    .top-header{
-
-        padding:15px 18px;
-    }
-
-    .header-logo{
-
-        font-size:.95rem;
-    }
-
-    .header-cta{
-
-        padding:12px 18px;
-        font-size:.9rem;
-    }
-
+/* ===================== NOTIF TOAST ===================== */
+.toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);
+  background:#5c3b28;color:white;padding:16px 28px;border-radius:999px;
+  font-weight:700;font-size:1rem;z-index:99999;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);white-space:nowrap;
 }
+.toast.visible{transform:translateX(-50%) translateY(0);}
 
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:768px){
+  .hero-card{padding:60px 25px;}
+  .operation-inner{padding:70px 25px;}
+  .operation h2{font-size:3.5rem;}
+  .section-title{font-size:3rem;}
+  .cta h3{font-size:2.2rem;}
+  .number{font-size:1.2rem;}
+  .buttons{flex-direction:column;}
+  .btn{width:100%;}
+  .game-section{padding:60px 25px;}
+  .game-title{font-size:2.5rem;}
+  .game-wrapper{gap:20px;}
+  .ruleta-section{padding:60px 25px;}
+  #gameCanvas{width:300px!important;height:400px!important;}
+  .don-grid{grid-template-columns:1fr;}
+}
 </style>
-
 </head>
-
 <body>
 
-<!-- BELLOTAS FLOTANTES -->
+<!-- CURSOR PERSONALIZADO -->
+<div id="cursor">🐿️</div>
+<div id="cursor-trail">🌰</div>
 
-<div class="floating-acorns">
-
-    <span>🌰</span>
-    <span>🐿️</span>
-    <span>🌰</span>
-    <span>✨</span>
-    <span>🌰</span>
-    <span>🐿️</span>
-
-</div>
-
-<!-- HEADER -->
-
-<header class="top-header">
-
-    <div class="header-logo">
-        🐿️ OPERACIÓN BELLOTA
-    </div>
-
-    <nav class="header-nav">
-
-        <a href="#bellometro">📊 Bellómetro</a>
-        <a href="#donar">🌰 Donar</a>
-        <a href="#galeria">📸 Galería</a>
-        <a href="#contacto">📡 Contacto</a>
-
-    </nav>
-
-    <a
-    href="https://wa.me/56945450443?text=Hola%20🐿️%20quiero%20donar%20a%20la%20Operación%20Bellota%20🌰"
-    target="_blank"
-    class="header-cta">
-
-        💚 DONAR
-
-    </a>
-
-</header>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <div class="container">
 
-<!-- HERO -->
-
+<!-- ===================== HERO ===================== -->
 <section class="hero">
+  <div class="hero-card">
+    <div class="hero-content">
+      <div class="logo" id="mainLogo" title="¡Haz clic!">🐿️</div>
+      <h1>OPERACIÓN<br>BELLOTA</h1>
+      <p class="hero-sub">
+        El centro oficial de abastecimiento táctico del legendario
+        <strong>Rodrigo "Ardillón" Rodríguez</strong>.
+        Cada donación fortalece la madriguera,
+        incrementa las reservas de bellotas y mantiene viva la energía ardillística.
+      </p>
 
-<div class="hero-card">
+      <div class="nivel-container">
+        <div class="nivel-label">⚡ Nivel de Energía Ardillística</div>
+        <div class="nivel-bar-wrap">
+          <div class="nivel-bar" id="nivelBar"></div>
+        </div>
+        <div class="nivel-texto" id="nivelTexto">Cargando energía...</div>
+      </div>
 
-<div class="hero-content">
-
-<div class="logo">
-🐿️
-</div>
-
-<h1>
-OPERACIÓN<br>
-BELLOTA
-</h1>
-
-<p class="hero-sub">
-
-El centro oficial de abastecimiento táctico del legendario
-<strong>Rodrigo “Ardillón” Rodríguez</strong>.
-Cada aporte fortalece la madriguera y mantiene vivas las reservas de bellotas premium.
-
-</p>
-
-<div class="badges">
-
-<div class="badge">
-🌰 Bellota Certified
-</div>
-
-<div class="badge">
-🔥 Nivel Épico
-</div>
-
-<div class="badge">
-🐿️ Madriguera Premium
-</div>
-
-<div class="badge">
-⚡ Operación Activa
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+      <div class="badges">
+        <div class="badge">🌰 Bellota Certified</div>
+        <div class="badge">🔥 Nivel Épico</div>
+        <div class="badge">🐿️ Madriguera Premium</div>
+        <div class="badge">⚡ Operación Activa</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- BELLOMETRO -->
+<!-- ===================== OPERATION BELLOTA ===================== -->
+<section class="operation">
+  <div class="operation-inner">
+    <div class="operation-top">
+      <div class="operation-left">
+        <div class="mission-tag">🛰️ MISIÓN GLOBAL ACTIVA</div>
+        <h2>FINANCIA<br>LA MADRIGUERA</h2>
+        <p>Las reservas de bellotas están bajando rápidamente. Cada aporte ayuda a mantener la operación funcionando: contenido, memes, energía, hidratación táctica y expansión oficial de la infraestructura ardillística.</p>
+      </div>
+    </div>
 
-<section class="bellometro-section" id="bellometro">
+    <!-- DONATION CARDS -->
+    <div class="donation-panel">
+      <div class="donation-card" onclick="donarClick(1000,'🌰 ¡Bellota Básica desbloqueada!')">
+        <div class="card-icon">🌰</div>
+        <div class="card-title">Bellota Básica</div>
+        <div class="card-price">$1.000</div>
+        <div class="card-desc">Aporte inicial para mantener la energía del Ardillón estable. Ideal para verdaderos aliados de la madriguera.</div>
+      </div>
+      <div class="donation-card" onclick="donarClick(5000,'🌟 ¡Bellota Dorada! Eres legendario')">
+        <div class="card-icon">🌟</div>
+        <div class="card-title">Bellota Dorada</div>
+        <div class="card-price">$5.000</div>
+        <div class="card-desc">Desbloquea apoyo premium y aumenta significativamente las reservas tácticas.</div>
+      </div>
+      <div class="donation-card" onclick="donarClick(10000,'🚀 ¡BELLOTA NUCLEAR! ARDILLÓN EPICO!')">
+        <div class="card-icon">🚀</div>
+        <div class="card-title">Bellota Nuclear</div>
+        <div class="card-price">$10.000+</div>
+        <div class="card-desc">Nivel legendario. Acceso honorífico al consejo supremo de la madriguera.</div>
+      </div>
+    </div>
 
-<div class="bellometro-container">
+    <!-- BOTONES -->
+    <div class="buttons">
+      <a href="https://wa.me/56945450443?text=Hola%20Ardillón%20🐿️%20quiero%20aportar%20a%20la%20Operación%20Bellota%20🌰" target="_blank" class="btn btn-whatsapp" onclick="confettiExplosion()">
+        💚 Donar por WhatsApp
+      </a>
+      <a href="https://wa.me/56945450443?text=Hola%20Ardillón%20🌟%20quiero%20hacer%20una%20SUPER%20DONACIÓN" target="_blank" class="btn btn-main" onclick="confettiExplosion()">
+        🌰 Activar Súper Bellota
+      </a>
+      <button class="btn btn-game" onclick="scrollToGame()">
+        🎮 Jugar Minijuego
+      </button>
+    </div>
 
-<div class="bellometro-left">
+    <!-- DONACIONES EN VIVO -->
+    <div class="donaciones-live">
+      <div class="don-title">📊 Reservas en Tiempo Real</div>
+      <div class="don-grid">
+        <div class="don-box">
+          <div class="don-num" id="totalDon">$47.500</div>
+          <div class="don-lbl">💰 Total Recaudado</div>
+        </div>
+        <div class="don-box">
+          <div class="don-num" id="donadores">23</div>
+          <div class="don-lbl">🐿️ Ardillones</div>
+        </div>
+        <div class="don-box">
+          <div class="don-num" id="bellotas">475</div>
+          <div class="don-lbl">🌰 Bellotas</div>
+        </div>
+      </div>
+      <div class="madriguera-progress">
+        <div class="mad-header">
+          <span class="mad-label">🏠 Progreso de la Madriguera</span>
+          <span class="mad-pct" id="madPct">47%</span>
+        </div>
+        <div class="mad-bar-wrap">
+          <div class="mad-bar" id="madBar"></div>
+        </div>
+        <div class="mad-meta">
+          <span>🌰 $0</span>
+          <span>Meta: $100.000 🏆</span>
+        </div>
+      </div>
+    </div>
 
-<div class="meter-tag">
-📊 ESTADO ACTUAL DE LA OPERACIÓN
-</div>
+    <!-- LIVE STATUS -->
+    <div class="live-status">
+      <div class="live-box" onclick="showToast('🌰 ¡El Ardillón siente tu apoyo!')">
+        <div class="live-number">98%</div>
+        <div class="live-label">Nivel de hambre de bellotas</div>
+      </div>
+      <div class="live-box" onclick="showToast('🐿️ ¡24/7 vigilando la madriguera!')">
+        <div class="live-number">24/7</div>
+        <div class="live-label">Operación ardillística activa</div>
+      </div>
+      <div class="live-box" onclick="showToast('🌰 ¡Capacidad INFINITA!')">
+        <div class="live-number">∞</div>
+        <div class="live-label">Capacidad de almacenar bellotas</div>
+      </div>
+    </div>
 
-<h2>
-BELLÓMETRO
-TACTICO
-</h2>
-
-<p>
-
-Las reservas oficiales de bellotas se encuentran al
-<strong>57%</strong>.
-Cada donación ayuda a mantener la operación funcionando
-y permite expandir la infraestructura ardillística premium.
-
-</p>
-
-<div class="meter-stats">
-
-<div class="stat-box">
-
-<div class="stat-number">
-57%
-</div>
-
-<div class="stat-label">
-Bellotas recolectadas
-</div>
-
-</div>
-
-<div class="stat-box">
-
-<div class="stat-number">
-143
-</div>
-
-<div class="stat-label">
-Donadores tácticos
-</div>
-
-</div>
-
-<div class="stat-box">
-
-<div class="stat-number">
-∞
-</div>
-
-<div class="stat-label">
-Capacidad de bellotas
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="bellometro-right">
-
-<div class="meter-circle">
-
-<div class="meter-glow"></div>
-
-<div class="meter-inner">
-
-<div class="meter-percent">
-57%
-</div>
-
-<div class="meter-text">
-COMPLETADO
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
-<!-- OPERACION -->
+<!-- ===================== MINIJUEGO ===================== -->
+<section class="game-section" id="gameSection">
+  <h2 class="game-title">🎮 ATRAPA LAS BELLOTAS</h2>
+  <p class="game-subtitle">¡Ayuda al Ardillón a recolectar bellotas! Cada bellota vale puntos para la madriguera.</p>
 
-<section class="operation" id="donar">
+  <div class="game-wrapper">
+    <div>
+      <div class="game-canvas-wrap">
+        <canvas id="gameCanvas" width="420" height="520"></canvas>
+        <div class="game-overlay" id="gameOverlay">
+          <div style="font-size:80px;margin-bottom:20px;">🐿️</div>
+          <div class="game-over-title" id="overlayTitle">¡OPERACIÓN BELLOTA!</div>
+          <div class="game-over-score" id="overlayScore">Atrapa todas las bellotas que puedas</div>
+          <button class="btn-start" id="btnStart" onclick="startGame()">▶ INICIAR MISIÓN</button>
+        </div>
+      </div>
+      <div class="game-instructions">
+        🖱️ <strong>Mueve el cursor</strong> para controlar al Ardillón<br>
+        🌰 Atrapa bellotas → <strong>+10 pts</strong><br>
+        💎 Bellota especial → <strong>+50 pts</strong><br>
+        💣 Evita las bombas → <strong>-1 vida</strong><br>
+        ⚡ Combo x5 → <strong>puntos dobles!</strong>
+      </div>
+    </div>
 
-<div class="operation-inner">
-
-<h2>
-FINANCIA<br>
-LA MADRIGUERA
-</h2>
-
-<p>
-
-Las reservas tácticas están bajando rápidamente.
-Cada aporte ayuda a mantener la energía del Ardillón,
-la producción de contenido y el abastecimiento estratégico de bellotas.
-
-</p>
-
-<div class="donation-panel">
-
-<div class="donation-card">
-
-<div class="card-icon">
-🌰
-</div>
-
-<div class="card-title">
-Bellota Básica
-</div>
-
-<div class="card-price">
-$1.000
-</div>
-
-<div class="card-desc">
-Apoyo inicial para mantener viva la operación.
-</div>
-
-</div>
-
-<div class="donation-card">
-
-<div class="card-icon">
-🌟
-</div>
-
-<div class="card-title">
-Bellota Dorada
-</div>
-
-<div class="card-price">
-$5.000
-</div>
-
-<div class="card-desc">
-Aporte premium para fortalecer la madriguera.
-</div>
-
-</div>
-
-<div class="donation-card">
-
-<div class="card-icon">
-🚀
-</div>
-
-<div class="card-title">
-Bellota Nuclear
-</div>
-
-<div class="card-price">
-$10.000+
-</div>
-
-<div class="card-desc">
-Nivel legendario de apoyo ardillístico.
-</div>
-
-</div>
-
-</div>
-
-<div class="buttons">
-
-<a
-href="https://wa.me/56945450443?text=Hola%20🐿️%20quiero%20donar%20a%20la%20Operación%20Bellota%20🌰"
-target="_blank"
-class="btn btn-whatsapp">
-
-💚 Donar por WhatsApp
-
-</a>
-
-<a
-href="https://wa.me/56945450443?text=Hola%20🌟%20quiero%20hacer%20una%20SUPER%20DONACIÓN"
-target="_blank"
-class="btn btn-main">
-
-🌰 Súper Bellota
-
-</a>
-
-</div>
-
-<div class="live-status">
-
-<div class="live-box">
-
-<div class="live-number">
-98%
-</div>
-
-<div class="live-label">
-Nivel de hambre de bellotas
-</div>
-
-</div>
-
-<div class="live-box">
-
-<div class="live-number">
-24/7
-</div>
-
-<div class="live-label">
-Operación activa
-</div>
-
-</div>
-
-<div class="live-box">
-
-<div class="live-number">
-∞
-</div>
-
-<div class="live-label">
-Capacidad táctica
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+    <div class="game-stats">
+      <div class="stat-box">
+        <div class="stat-num" id="gameScore">0</div>
+        <div class="stat-lbl">🏆 Puntos</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="gameLives">❤️❤️❤️</div>
+        <div class="stat-lbl">Vidas</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="gameLevel">1</div>
+        <div class="stat-lbl">⚡ Nivel</div>
+      </div>
+      <div class="combo-display" id="comboDisplay">
+        <div class="combo-num" id="comboNum">x1</div>
+        <div class="stat-lbl">🔥 Combo</div>
+      </div>
+      <div class="high-score-box">
+        <div class="hs-num" id="highScore">0</div>
+        <div class="stat-lbl">⭐ Récord</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- GALLERY -->
-
-<section class="gallery" id="galeria">
-
-<h2 class="section-title">
-Momentos del Ardillón
-</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<img src="https://i.postimg.cc/5tVSzN2L/Whats-App-Image-2026-05-19-at-12-13-07-PM.jpg" alt="Rodrigo 1">
-
-<div class="card-content">
-
-<p>
-📱 Coordinando operaciones secretas de bellotas.
-</p>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="https://i.postimg.cc/YCfmJNtF/Whats-App-Image-2026-05-19-at-12-14-35-PM.jpg" alt="Rodrigo 2">
-
-<div class="card-content">
-
-<p>
-🏠 Descansando estratégicamente en la madriguera.
-</p>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="https://i.postimg.cc/x1J0WMMN/Whats-App-Image-2026-05-19-at-12-18-49-PM.jpg" alt="Rodrigo 3">
-
-<div class="card-content">
-
-<p>
-⚡ El Ardillón alcanzando su forma definitiva.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+<!-- ===================== LOGROS ===================== */
+<section class="logros-section">
+  <h2 class="section-title">🏆 Logros del Ardillón</h2>
+  <p class="section-sub">Desbloquea logros completando acciones épicas</p>
+  <div class="logros-grid" id="logrosGrid"></div>
 </section>
 
-<!-- CTA -->
+<!-- ===================== RULETA ===================== -->
+<section class="ruleta-section">
+  <h2 class="section-title" style="color:var(--naranja)">🎡 RUEDA DE LA FORTUNA</h2>
+  <p class="section-sub" style="color:#888">¡Gira para descubrir qué tipo de Ardillón eres!</p>
 
-<section class="cta" id="contacto">
+  <div class="ruleta-wrap">
+    <div class="ruleta-canvas-wrap">
+      <canvas id="rouletteCanvas" width="340" height="340"></canvas>
+      <div class="ruleta-arrow">◀</div>
+    </div>
 
-<h3>
-📡 CONTACTO OFICIAL
-</h3>
+    <div class="ruleta-info">
+      <h3 style="font-family:'Luckiest Guy',cursive;font-size:2.5rem;color:var(--marron);margin-bottom:15px;">¿Qué tipo de donante eres?</h3>
+      <p style="color:#666;font-size:1.1rem;line-height:1.8;margin-bottom:25px;">Gira la rueda mística del Ardillón y descubre tu destino ardillístico. El resultado revelará tu nivel de compromiso con la madriguera.</p>
 
-<p>
-Central oficial de comunicaciones de la Operación Bellota.
-</p>
+      <button class="btn-spin" id="btnSpin" onclick="spinWheel()">🎡 GIRAR LA RUEDA</button>
 
-<div class="number">
-💬 +56 9 4545 0443
-</div>
+      <div class="ruleta-result" id="ruletaResult">
+        <div class="ruleta-result-emoji">🐿️</div>
+        <div class="ruleta-result-text">¡Aún no has girado!</div>
+        <div class="ruleta-result-sub">Toca el botón para descubrir tu destino</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ===================== GALERÍA ===================== -->
+<section class="gallery">
+  <h2 class="section-title">Momentos Históricos del Ardillón</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://i.postimg.cc/5tVSzN2L/Whats-App-Image-2026-05-19-at-12-13-07-PM.jpg" alt="Ardillón coordinando" loading="lazy">
+      <div class="card-content"><p>📱 Coordinando abastecimientos secretos de bellotas.</p></div>
+    </div>
+    <div class="card">
+      <img src="https://i.postimg.cc/YCfmJNtF/Whats-App-Image-2026-05-19-at-12-14-35-PM.jpg" alt="Ardillón descansando" loading="lazy">
+      <div class="card-content"><p>🏠 Descansando estratégicamente dentro de la madriguera.</p></div>
+    </div>
+    <div class="card">
+      <img src="https://i.postimg.cc/x1J0WMMN/Whats-App-Image-2026-05-19-at-12-18-49-PM.jpg" alt="Ardillón en forma definitiva" loading="lazy">
+      <div class="card-content"><p>⚡ El Ardillón alcanzando su forma definitiva.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta">
+  <h3>📡 CONTACTO DIRECTO</h3>
+  <p>La central oficial de comunicaciones de la Operación Bellota está disponible.</p>
+  <div class="number">💬 +56 9 4545 0443</div>
 </section>
 
 <footer>
-
-<p>
-Operación Bellota © 2026 — Rodrigo "Ardillón" Rodríguez 🌰
-</p>
-
+  <p>Operación Bellota © 2026 — Rodrigo "Ardillón" Rodríguez 🌰<br>
+  <span style="font-size:0.85rem;opacity:0.6;">Hecho con amor y bellotas 🐿️ · Cada donación cuenta</span></p>
 </footer>
 
 </div>
 
+<script>
+/* ======================================
+   CURSOR PERSONALIZADO
+====================================== */
+const cursor = document.getElementById('cursor');
+const trail = document.getElementById('cursor-trail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+});
+function animTrail(){
+  tx+=(mx-tx)*0.18; ty+=(my-ty)*0.18;
+  trail.style.left=tx+'px'; trail.style.top=ty+'px';
+  requestAnimationFrame(animTrail);
+}
+animTrail();
+
+/* ======================================
+   TOAST
+====================================== */
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('visible');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('visible'),3000);
+}
+
+/* ======================================
+   NIVEL BAR ON LOAD
+====================================== */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('nivelBar').style.width='78%';
+    document.getElementById('nivelTexto').textContent='⚡ Nivel 12 — Ardillón Épico · 78% cargado';
+  },500);
+  setTimeout(()=>{
+    document.getElementById('madBar').style.width='47%';
+  },800);
+});
+
+/* ======================================
+   LOGO CLICK
+====================================== */
+let logoClicks=0;
+document.getElementById('mainLogo').addEventListener('click',function(){
+  logoClicks++;
+  const msgs=['🌰 ¡Clic en el Ardillón!','🐿️ ¡Ouch!','🌟 ¡Ja ja ja!','💥 ¡Para, para!','🚀 ¡MODO ULTRA ACTIVADO!'];
+  if(logoClicks===5){showToast('🎉 ¡LOGRO DESBLOQUEADO: Fan Obsesivo!');desbloquearLogro('fanObsesivo');}
+  showToast(msgs[Math.min(logoClicks-1,msgs.length-1)]);
+  spawnBellotas(this);
+});
+
+/* ======================================
+   CONFETTI
+====================================== */
+function confettiExplosion(){
+  const colors=['#ffd93b','#ff9800','#74b62d','#ff5722','#e91e63','#2196f3'];
+  const emojis=['🌰','🐿️','⭐','🎉','✨','🌟'];
+  for(let i=0;i<60;i++){
+    setTimeout(()=>{
+      const p=document.createElement('div');
+      p.className='confetti-piece';
+      const isEmoji=Math.random()>0.6;
+      if(isEmoji){
+        p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+        p.style.background='transparent';
+        p.style.fontSize='20px';
+        p.style.width='auto'; p.style.height='auto';
+      } else {
+        p.style.background=colors[Math.floor(Math.random()*colors.length)];
+        p.style.borderRadius=Math.random()>0.5?'50%':'2px';
+      }
+      p.style.left=Math.random()*100+'vw';
+      p.style.top='0px';
+      p.style.animationDuration=(2+Math.random()*3)+'s';
+      p.style.animationDelay=(Math.random()*0.5)+'s';
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(),5000);
+    },i*30);
+  }
+}
+
+/* ======================================
+   DONAR CLICK
+====================================== */
+function donarClick(amount,msg){
+  confettiExplosion();
+  showToast(msg);
+  spawnBellotasAt(window.innerWidth/2,window.innerHeight/2);
+  // Actualizar contadores simulados
+  const n=parseInt(document.getElementById('bellotas').textContent)+Math.floor(amount/100);
+  document.getElementById('bellotas').textContent=n;
+  const d=parseInt(document.getElementById('donadores').textContent)+1;
+  document.getElementById('donadores').textContent=d;
+  desbloquearLogro('primeraDonacion');
+}
+
+/* ======================================
+   SPAWN BELLOTAS FLOTANTES
+====================================== */
+function spawnBellotas(el){
+  const r=el.getBoundingClientRect();
+  spawnBellotasAt(r.left+r.width/2,r.top+r.height/2);
+}
+function spawnBellotasAt(x,y){
+  const icons=['🌰','⭐','✨','🐿️'];
+  for(let i=0;i<8;i++){
+    const b=document.createElement('div');
+    b.className='float-bellota';
+    b.textContent=icons[Math.floor(Math.random()*icons.length)];
+    b.style.left=(x+Math.random()*80-40)+'px';
+    b.style.top=y+'px';
+    b.style.animationDuration=(1+Math.random())+'s';
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),2000);
+  }
+}
+
+function scrollToGame(){
+  document.getElementById('gameSection').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>showToast('🎮 ¡Bienvenido al juego!'),800);
+}
+
+/* ======================================
+   LOGROS
+====================================== */
+const LOGROS=[
+  {id:'primeraDonacion',emoji:'💰',name:'Primera Bellota',desc:'Haz tu primera donación',desbloqueado:false},
+  {id:'fanObsesivo',emoji:'🤩',name:'Fan Obsesivo',desc:'Haz clic 5 veces en el Ardillón',desbloqueado:false},
+  {id:'jugador',emoji:'🎮',name:'Jugador Épico',desc:'Consigue 100 pts en el minijuego',desbloqueado:false},
+  {id:'ruleta',emoji:'🎡',name:'Girador de Ruedas',desc:'Gira la rueda de la fortuna',desbloqueado:false},
+  {id:'combo',emoji:'🔥',name:'Maestro del Combo',desc:'Alcanza un combo x5 en el juego',desbloqueado:false},
+  {id:'nuclear',emoji:'🚀',name:'Bellota Nuclear',desc:'Haz click en la tarjeta nuclear',desbloqueado:false},
+  {id:'nochero',emoji:'🌙',name:'Ardillón Nocturno',desc:'Visita la página de noche',desbloqueado:false},
+  {id:'veloz',emoji:'⚡',name:'Velocidad Ardillística',desc:'Atrapa 10 bellotas seguidas',desbloqueado:false},
+];
+let logrosState={};
+
+function renderLogros(){
+  const g=document.getElementById('logrosGrid');
+  g.innerHTML='';
+  LOGROS.forEach(l=>{
+    const d=logrosState[l.id]||false;
+    const div=document.createElement('div');
+    div.className='logro-card '+(d?'desbloqueado':'bloqueado');
+    div.innerHTML=`<div class="logro-emoji">${l.emoji}</div><div class="logro-name">${l.name}</div><div class="logro-desc">${d?l.desc:'???'}</div>`;
+    if(!d) div.title='Logro bloqueado';
+    g.appendChild(div);
+  });
+}
+
+function desbloquearLogro(id){
+  if(!logrosState[id]){
+    logrosState[id]=true;
+    renderLogros();
+    const l=LOGROS.find(x=>x.id===id);
+    if(l) setTimeout(()=>showToast(`🏆 LOGRO: ${l.emoji} ${l.name}`),500);
+  }
+}
+
+// Logro nocturno
+const h=new Date().getHours();
+if(h>=22||h<6) setTimeout(()=>desbloquearLogro('nochero'),1000);
+
+renderLogros();
+
+/* ======================================
+   MINIJUEGO: ATRAPA BELLOTAS
+====================================== */
+const canvas=document.getElementById('gameCanvas');
+const ctx=canvas.getContext('2d');
+let gameRunning=false;
+let score=0,lives=3,combo=1,level=1,frameCount=0;
+let squirrelX=210,squirrelY=460;
+let items=[];
+let highScore=0;
+let comboTimer=0;
+let consecutiveCatch=0;
+
+function startGame(){
+  score=0;lives=3;combo=1;level=1;frameCount=0;
+  items=[];consecutiveCatch=0;comboTimer=0;
+  gameRunning=true;
+  document.getElementById('gameOverlay').classList.add('hidden');
+  updateGameUI();
+  gameLoop();
+  showToast('🎮 ¡Operación Bellota iniciada!');
+}
+
+function endGame(){
+  gameRunning=false;
+  if(score>highScore){highScore=score;document.getElementById('highScore').textContent=highScore;}
+  document.getElementById('gameOverlay').classList.remove('hidden');
+  document.getElementById('overlayTitle').textContent=score>highScore*0.8?'🏆 ¡RÉCORD!':'💀 GAME OVER';
+  document.getElementById('overlayScore').textContent=`Bellotas recolectadas: ${score} pts`;
+  document.getElementById('btnStart').textContent='▶ REINICIAR MISIÓN';
+  if(score>=100) desbloquearLogro('jugador');
+  confettiExplosion();
+}
+
+function updateGameUI(){
+  document.getElementById('gameScore').textContent=score;
+  document.getElementById('gameLives').textContent='❤️'.repeat(lives)+'🖤'.repeat(3-lives);
+  document.getElementById('gameLevel').textContent=level;
+  document.getElementById('comboNum').textContent='x'+combo;
+  const cd=document.getElementById('comboDisplay');
+  cd.style.background=combo>=5?'rgba(255,152,0,0.4)':'rgba(255,152,0,0.2)';
+  cd.style.borderColor=combo>=5?'rgba(255,152,0,0.8)':'rgba(255,152,0,0.4)';
+}
+
+// Movimiento del jugador
+canvas.addEventListener('mousemove',e=>{
+  const r=canvas.getBoundingClientRect();
+  squirrelX=Math.max(40,Math.min(canvas.width-40,(e.clientX-r.left)/r.width*canvas.width));
+});
+canvas.addEventListener('touchmove',e=>{
+  e.preventDefault();
+  const r=canvas.getBoundingClientRect();
+  const t=e.touches[0];
+  squirrelX=Math.max(40,Math.min(canvas.width-40,(t.clientX-r.left)/r.width*canvas.width));
+},{passive:false});
+
+function spawnItem(){
+  const roll=Math.random();
+  let type;
+  if(roll<0.55) type='bellota';
+  else if(roll<0.72) type='golden';
+  else if(roll<0.82) type='bomb';
+  else type='special';
+  
+  const speed=1.5+level*0.5+Math.random()*1.5;
+  items.push({
+    x:30+Math.random()*(canvas.width-60),
+    y:-30,
+    type,
+    speed,
+    rotation:0,
+    rotSpeed:(Math.random()-0.5)*0.1,
+    size:type==='bomb'?32:type==='special'?36:28,
+    sparkle:type==='golden'||type==='special',
+    wobble:0,
+  });
+}
+
+const ITEM_EMOJI={bellota:'🌰',golden:'💎',bomb:'💣',special:'⭐'};
+const ITEM_POINTS={bellota:10,golden:50,bomb:0,special:30};
+
+function gameLoop(){
+  if(!gameRunning) return;
+  frameCount++;
+
+  // Spawn
+  const spawnRate=Math.max(18,38-level*4);
+  if(frameCount%spawnRate===0) spawnItem();
+
+  // Nivel
+  level=Math.floor(frameCount/180)+1;
+
+  // Combo decay
+  if(comboTimer>0){comboTimer--;if(comboTimer===0){combo=1;updateGameUI();}}
+
+  // Clear
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // Fondo
+  ctx.fillStyle='#0d0025';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // Estrellas
+  ctx.fillStyle='rgba(255,255,255,0.5)';
+  for(let i=0;i<30;i++){
+    const sx=(i*137+frameCount*0.1)%canvas.width;
+    const sy=(i*79)%canvas.height;
+    const ss=0.5+Math.sin(frameCount*0.05+i)*0.5;
+    ctx.beginPath();
+    ctx.arc(sx,sy,ss,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  // Suelo
+  const g=ctx.createLinearGradient(0,canvas.height-60,0,canvas.height);
+  g.addColorStop(0,'#3b1f0f');g.addColorStop(1,'#1a0800');
+  ctx.fillStyle=g;
+  ctx.beginPath();
+  ctx.roundRect(0,canvas.height-55,canvas.width,55,15);
+  ctx.fill();
+
+  // Items
+  items=items.filter(item=>{
+    item.y+=item.speed;
+    item.rotation+=item.rotSpeed;
+    item.wobble+=0.1;
+
+    // Check catch
+    const dx=item.x-squirrelX;
+    const dy=item.y-squirrelY;
+    const dist=Math.sqrt(dx*dx+dy*dy);
+
+    if(dist<50){
+      if(item.type==='bomb'){
+        lives--;
+        combo=1;comboTimer=0;consecutiveCatch=0;
+        showToast('💣 ¡BOMBA! -1 vida');
+        ctx.strokeStyle='#ff0000';
+        ctx.lineWidth=4;
+        ctx.beginPath();
+        ctx.arc(squirrelX,squirrelY,60,0,Math.PI*2);
+        ctx.stroke();
+        updateGameUI();
+        if(lives<=0) endGame();
+      } else {
+        const pts=ITEM_POINTS[item.type]*combo;
+        score+=pts;
+        consecutiveCatch++;
+        if(consecutiveCatch>=5){
+          combo=Math.min(combo+1,8);
+          comboTimer=120;
+          desbloquearLogro('combo');
+          showToast('🔥 ¡COMBO x'+combo+'!');
+        }
+        if(consecutiveCatch>=10) desbloquearLogro('veloz');
+        spawnBellotasAt(item.x+canvas.getBoundingClientRect().left,item.y+canvas.getBoundingClientRect().top);
+        // Puntos flotantes
+        floatingTexts.push({x:item.x,y:item.y,text:'+'+pts,alpha:1,vy:-2,color:item.type==='golden'?'#ffd700':item.type==='special'?'#ff9800':'#74b62d'});
+        updateGameUI();
+      }
+      return false;
+    }
+
+    // Missed
+    if(item.y>canvas.height-30){
+      if(item.type!=='bomb'){
+        consecutiveCatch=0;
+        combo=Math.max(1,combo-1);
+        updateGameUI();
+      }
+      return false;
+    }
+
+    // Draw item
+    ctx.save();
+    ctx.translate(item.x,item.y);
+    ctx.rotate(item.rotation);
+    if(item.sparkle){
+      ctx.shadowBlur=15;
+      ctx.shadowColor=item.type==='golden'?'#ffd700':'#ff9800';
+    }
+    const sc=1+Math.sin(item.wobble)*0.05;
+    ctx.scale(sc,sc);
+    ctx.font=item.size+'px serif';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.fillText(ITEM_EMOJI[item.type],0,0);
+    ctx.restore();
+    return true;
+  });
+
+  // Floating texts
+  floatingTexts=floatingTexts.filter(ft=>{
+    ft.y+=ft.vy; ft.alpha-=0.025;
+    ctx.save();
+    ctx.globalAlpha=ft.alpha;
+    ctx.font='bold 22px Fredoka';
+    ctx.fillStyle=ft.color;
+    ctx.textAlign='center';
+    ctx.fillText(ft.text,ft.x,ft.y);
+    ctx.restore();
+    return ft.alpha>0;
+  });
+
+  // Ardillón (jugador)
+  ctx.save();
+  const bob=Math.sin(frameCount*0.15)*3;
+  ctx.font='52px serif';
+  ctx.textAlign='center';
+  ctx.textBaseline='middle';
+  // Shadow
+  ctx.save();
+  ctx.globalAlpha=0.15;
+  ctx.fillStyle='black';
+  ctx.beginPath();
+  ctx.ellipse(squirrelX,squirrelY+30,20,8,0,0,Math.PI*2);
+  ctx.fill();
+  ctx.restore();
+  ctx.fillText('🐿️',squirrelX,squirrelY+bob);
+  ctx.restore();
+
+  // Barras de estado
+  // Score top left
+  ctx.fillStyle='rgba(0,0,0,0.4)';
+  ctx.beginPath();
+  ctx.roundRect(10,10,130,38,10);
+  ctx.fill();
+  ctx.fillStyle='#ffd93b';
+  ctx.font='bold 16px Fredoka';
+  ctx.textAlign='left';
+  ctx.fillText('🌰 '+score+' pts',20,34);
+
+  // Level top right
+  ctx.fillStyle='rgba(0,0,0,0.4)';
+  ctx.beginPath();
+  ctx.roundRect(canvas.width-110,10,100,38,10);
+  ctx.fill();
+  ctx.fillStyle='#74b62d';
+  ctx.textAlign='right';
+  ctx.fillText('LVL '+level+' ⚡',canvas.width-15,34);
+
+  requestAnimationFrame(gameLoop);
+}
+
+let floatingTexts=[];
+
+/* ======================================
+   RULETA
+====================================== */
+const rCanvas=document.getElementById('rouletteCanvas');
+const rCtx=rCanvas.getContext('2d');
+const SECTORES=[
+  {label:'Ardillón Básico',emoji:'🌰',color:'#ff9800',sub:'Tu primera bellota es lo más importante',desc:'Donante inicial'},
+  {label:'Ardillón Dorado',emoji:'🌟',color:'#ffd93b',sub:'Brillas como una bellota dorada',desc:'Donante premium'},
+  {label:'Ardillón Nuclear',emoji:'🚀',color:'#74b62d',sub:'Eres LEGENDARIO en la madriguera',desc:'Donante épico'},
+  {label:'Ardillón Curioso',emoji:'👀',color:'#e91e63',sub:'Solo viniste a ver qué hay aquí',desc:'Observador táctico'},
+  {label:'Ardillón Meme',emoji:'😂',color:'#9c27b0',sub:'Todo es un meme para ti, igual dona',desc:'Memero de élite'},
+  {label:'Ardillón Pro',emoji:'💎',color:'#2196f3',sub:'Profesional del apoyo ardillístico',desc:'Donante de élite'},
+  {label:'Ardillón Capo',emoji:'👑',color:'#ff5722',sub:'El rey de la madriguera ha llegado',desc:'Donante supremo'},
+  {label:'Ardillón Misterioso',emoji:'🎭',color:'#607d8b',sub:'Nadie sabe quién eres... y eso mola',desc:'Agente secreto'},
+];
+
+let spinning=false;
+let currentAngle=0;
+let targetAngle=0;
+let spinStart=0;
+let spinDuration=4000;
+
+function drawRoulette(angle){
+  const cx=rCanvas.width/2, cy=rCanvas.height/2;
+  const r=155;
+  const n=SECTORES.length;
+  const arc=2*Math.PI/n;
+
+  rCtx.clearRect(0,0,rCanvas.width,rCanvas.height);
+
+  // Sombra exterior
+  rCtx.save();
+  rCtx.shadowBlur=25;
+  rCtx.shadowColor='rgba(0,0,0,0.3)';
+  rCtx.beginPath();
+  rCtx.arc(cx,cy,r+5,0,Math.PI*2);
+  rCtx.fillStyle='#333';
+  rCtx.fill();
+  rCtx.restore();
+
+  SECTORES.forEach((s,i)=>{
+    const start=angle+i*arc;
+    const end=start+arc;
+
+    rCtx.save();
+    rCtx.beginPath();
+    rCtx.moveTo(cx,cy);
+    rCtx.arc(cx,cy,r,start,end);
+    rCtx.closePath();
+    rCtx.fillStyle=s.color;
+    rCtx.fill();
+    rCtx.strokeStyle='rgba(255,255,255,0.3)';
+    rCtx.lineWidth=2;
+    rCtx.stroke();
+    rCtx.restore();
+
+    // Emoji
+    const mid=start+(end-start)/2;
+    const er=r*0.68;
+    const ex=cx+Math.cos(mid)*er;
+    const ey=cy+Math.sin(mid)*er;
+    rCtx.save();
+    rCtx.translate(ex,ey);
+    rCtx.rotate(mid+Math.PI/2);
+    rCtx.font='22px serif';
+    rCtx.textAlign='center';
+    rCtx.textBaseline='middle';
+    rCtx.fillText(s.emoji,0,0);
+    rCtx.restore();
+
+    // Label
+    const lr=r*0.42;
+    const lx=cx+Math.cos(mid)*lr;
+    const ly=cy+Math.sin(mid)*lr;
+    rCtx.save();
+    rCtx.translate(lx,ly);
+    rCtx.rotate(mid+Math.PI/2);
+    rCtx.font='bold 11px Fredoka';
+    rCtx.fillStyle='rgba(255,255,255,0.95)';
+    rCtx.textAlign='center';
+    rCtx.textBaseline='middle';
+    const words=s.desc.split(' ');
+    const line1=words.slice(0,Math.ceil(words.length/2)).join(' ');
+    const line2=words.slice(Math.ceil(words.length/2)).join(' ');
+    rCtx.fillText(line1,0,-7);
+    rCtx.fillText(line2,0,7);
+    rCtx.restore();
+  });
+
+  // Centro
+  rCtx.save();
+  rCtx.shadowBlur=15;
+  rCtx.shadowColor='rgba(0,0,0,0.4)';
+  rCtx.beginPath();
+  rCtx.arc(cx,cy,28,0,Math.PI*2);
+  const cg=rCtx.createRadialGradient(cx,cy,0,cx,cy,28);
+  cg.addColorStop(0,'#ffd93b'); cg.addColorStop(1,'#ff9800');
+  rCtx.fillStyle=cg;
+  rCtx.fill();
+  rCtx.strokeStyle='rgba(255,255,255,0.5)';
+  rCtx.lineWidth=3;
+  rCtx.stroke();
+  rCtx.restore();
+  rCtx.font='22px serif';
+  rCtx.textAlign='center';
+  rCtx.textBaseline='middle';
+  rCtx.fillText('🐿️',cx,cy);
+}
+
+function easeOut(t){return 1-Math.pow(1-t,4);}
+
+function animateSpin(ts){
+  if(!spinStart) spinStart=ts;
+  const elapsed=ts-spinStart;
+  const t=Math.min(elapsed/spinDuration,1);
+  const ease=easeOut(t);
+  currentAngle=currentAngle+(targetAngle-currentAngle)*ease;
+  drawRoulette(currentAngle);
+  if(t<1){requestAnimationFrame(animateSpin);}
+  else{
+    spinning=false;
+    document.getElementById('btnSpin').disabled=false;
+    // Calcular sector ganador
+    const norm=((-currentAngle%(2*Math.PI))+(2*Math.PI))%(2*Math.PI);
+    const idx=Math.floor(norm/(2*Math.PI/SECTORES.length))%SECTORES.length;
+    const s=SECTORES[(SECTORES.length-1-idx+1)%SECTORES.length];
+    showResult(s);
+    desbloquearLogro('ruleta');
+  }
+}
+
+function spinWheel(){
+  if(spinning) return;
+  spinning=true;
+  document.getElementById('btnSpin').disabled=true;
+  spinStart=0;
+  const extraSpins=5+Math.floor(Math.random()*5);
+  const randAngle=Math.random()*Math.PI*2;
+  targetAngle=currentAngle+extraSpins*Math.PI*2+randAngle;
+  requestAnimationFrame(animateSpin);
+  showToast('🎡 ¡La rueda gira!');
+}
+
+function showResult(s){
+  const r=document.getElementById('ruletaResult');
+  r.innerHTML=`<div class="ruleta-result-emoji">${s.emoji}</div><div class="ruleta-result-text">${s.label}</div><div class="ruleta-result-sub">${s.sub}</div>`;
+  confettiExplosion();
+  showToast(`${s.emoji} ¡Eres un ${s.label}!`);
+}
+
+drawRoulette(0);
+
+/* ======================================
+   BADGE NUCLEAR LOGRO
+====================================== */
+document.querySelector('.donation-card:last-child').addEventListener('click',()=>desbloquearLogro('nuclear'));
+
+/* ======================================
+   SIMULACIÓN CONTADOR LIVE
+====================================== */
+function animateCounter(el,from,to,duration){
+  const start=Date.now();
+  const update=()=>{
+    const t=Math.min((Date.now()-start)/duration,1);
+    const val=Math.round(from+(to-from)*t);
+    el.textContent=val.toLocaleString('es-CL');
+    if(t<1) requestAnimationFrame(update);
+  };
+  update();
+}
+setTimeout(()=>{
+  const donEl=document.getElementById('totalDon');
+  const bellEl=document.getElementById('bellotas');
+  animateCounter({set textContent(v){donEl.textContent='$'+v}},0,47500,2000);
+  animateCounter({set textContent(v){bellEl.textContent=v}},0,475,2000);
+},1000);
+
+/* ======================================
+   BADGES INTERACTIVOS
+====================================== */
+document.querySelectorAll('.badge').forEach((b,i)=>{
+  b.addEventListener('click',()=>{
+    const msgs=['🌰 ¡Certificación validada!','🔥 Nivel épico confirmado!','🏠 Madriguera premium activada!','⚡ ¡Sistema operativo!'];
+    showToast(msgs[i%msgs.length]);
+    spawnBellotas(b);
+  });
+});
+
+/* ======================================
+   PARTICLES EN FONDO (BELLOTAS CAYENDO)
+====================================== */
+const bgCanvas=document.createElement('canvas');
+bgCanvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;opacity:0.06;';
+document.body.appendChild(bgCanvas);
+const bgCtx=bgCanvas.getContext('2d');
+bgCanvas.width=window.innerWidth;
+bgCanvas.height=window.innerHeight;
+const bgParticles=Array.from({length:20},()=>({
+  x:Math.random()*window.innerWidth,
+  y:Math.random()*window.innerHeight,
+  speed:0.3+Math.random()*0.7,
+  size:20+Math.random()*30,
+  rot:Math.random()*Math.PI*2,
+  rotSpeed:(Math.random()-0.5)*0.02,
+}));
+function animBg(){
+  bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
+  bgParticles.forEach(p=>{
+    p.y+=p.speed; p.rot+=p.rotSpeed;
+    if(p.y>bgCanvas.height+40){p.y=-40;p.x=Math.random()*bgCanvas.width;}
+    bgCtx.save();
+    bgCtx.translate(p.x,p.y);
+    bgCtx.rotate(p.rot);
+    bgCtx.font=p.size+'px serif';
+    bgCtx.textAlign='center';
+    bgCtx.textBaseline='middle';
+    bgCtx.fillText('🌰',0,0);
+    bgCtx.restore();
+  });
+  requestAnimationFrame(animBg);
+}
+animBg();
+
+window.addEventListener('resize',()=>{
+  bgCanvas.width=window.innerWidth;
+  bgCanvas.height=window.innerHeight;
+});
+
+// Inicio con mensaje
+setTimeout(()=>showToast('🐿️ ¡Bienvenido a la Operación Bellota!'),1500);
+</script>
 </body>
 </html>
