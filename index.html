@@ -1,8 +1,3 @@
-<!-- ========================= -->
-<!-- OPERACIÓN BELLOTA V6.0  -->
-<!-- ULTRA PREMIUM EXPERIENCE -->
-<!-- ========================= -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,9 +11,9 @@
 
 <style>
 
-/* ========================================= */
+/* ================================================= */
 /* RESET */
-/* ========================================= */
+/* ================================================= */
 
 *{
     margin:0;
@@ -37,9 +32,9 @@ body{
     color:#3e2c22;
 }
 
-/* ========================================= */
+/* ================================================= */
 /* VARIABLES */
-/* ========================================= */
+/* ================================================= */
 
 :root{
 
@@ -47,97 +42,258 @@ body{
     --verde2:#95d840;
 
     --amarillo:#ffd93b;
-    --amarillo2:#ffef96;
-
     --naranja:#ff9800;
-    --naranja2:#ffb53c;
 
     --marron:#5c3b28;
-    --marron2:#8d5b3e;
-
-    --blanco:#ffffff;
 
     --shadow:
-    0 10px 40px rgba(0,0,0,.08);
+    0 20px 50px rgba(0,0,0,.08);
 
 }
 
-/* ========================================= */
-/* FONDO CINEMÁTICO */
-/* ========================================= */
+/* ================================================= */
+/* FONDO */
+/* ================================================= */
 
 body::before{
+
     content:"";
+
     position:fixed;
     inset:0;
 
     background:
     radial-gradient(circle at top left, rgba(255,152,0,.12), transparent 20%),
-    radial-gradient(circle at top right, rgba(255,217,59,.18), transparent 25%),
-    radial-gradient(circle at bottom left, rgba(116,182,45,.12), transparent 20%),
-    radial-gradient(circle at bottom right, rgba(255,152,0,.1), transparent 20%);
+    radial-gradient(circle at top right, rgba(255,217,59,.16), transparent 25%),
+    radial-gradient(circle at bottom left, rgba(116,182,45,.12), transparent 20%);
 
     z-index:-3;
+
 }
 
-body::after{
-    content:"🌰 🌰 🌰 🌰 🌰 🌰 🌰";
+/* ================================================= */
+/* BELLOTAS FLOTANTES */
+/* ================================================= */
+
+.floating-acorns{
+
     position:fixed;
-    top:-100px;
-    left:-10%;
-    width:120%;
-    opacity:.04;
-    font-size:60px;
-    animation:falling 18s linear infinite;
-    z-index:-2;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:1;
 }
 
-@keyframes falling{
+.floating-acorns span{
 
-    from{
+    position:absolute;
+
+    font-size:42px;
+
+    opacity:.10;
+
+    animation:floatAround linear infinite;
+}
+
+.floating-acorns span:nth-child(1){
+    left:5%;
+    top:20%;
+    animation-duration:16s;
+}
+
+.floating-acorns span:nth-child(2){
+    left:80%;
+    top:12%;
+    animation-duration:20s;
+}
+
+.floating-acorns span:nth-child(3){
+    left:15%;
+    top:72%;
+    animation-duration:18s;
+}
+
+.floating-acorns span:nth-child(4){
+    left:90%;
+    top:60%;
+    animation-duration:14s;
+}
+
+.floating-acorns span:nth-child(5){
+    left:55%;
+    top:40%;
+    animation-duration:22s;
+}
+
+.floating-acorns span:nth-child(6){
+    left:72%;
+    top:82%;
+    animation-duration:17s;
+}
+
+@keyframes floatAround{
+
+    0%{
         transform:
-        translateY(-100px)
+        translateY(0)
         rotate(0deg);
     }
 
-    to{
+    50%{
         transform:
-        translateY(120vh)
-        rotate(360deg);
+        translateY(-30px)
+        rotate(15deg);
+    }
+
+    100%{
+        transform:
+        translateY(0)
+        rotate(0deg);
     }
 
 }
 
-/* ========================================= */
+/* ================================================= */
+/* HEADER */
+/* ================================================= */
+
+.top-header{
+
+    position:fixed;
+
+    top:18px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(1280px, 94%);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px 28px;
+
+    background:
+    rgba(255,255,255,.75);
+
+    backdrop-filter:blur(16px);
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.6);
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.08);
+
+    z-index:9999;
+}
+
+.header-logo{
+
+    font-size:1.15rem;
+    font-weight:700;
+
+    color:var(--marron);
+}
+
+.header-nav{
+
+    display:flex;
+    gap:28px;
+}
+
+.header-nav a{
+
+    text-decoration:none;
+
+    color:var(--marron);
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.header-nav a:hover{
+
+    color:var(--naranja);
+
+    transform:translateY(-2px);
+}
+
+.header-cta{
+
+    text-decoration:none;
+
+    background:
+    linear-gradient(
+        135deg,
+        #25D366,
+        #1db954
+    );
+
+    color:white;
+
+    padding:15px 24px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 10px 25px rgba(37,211,102,.35);
+
+    transition:.3s;
+}
+
+.header-cta:hover{
+
+    transform:
+    translateY(-4px)
+    scale(1.04);
+
+}
+
+/* ================================================= */
 /* CONTAINER */
-/* ========================================= */
+/* ================================================= */
 
 .container{
+
     width:min(1300px, 92%);
     margin:auto;
 }
 
-/* ========================================= */
+/* ================================================= */
 /* HERO */
-/* ========================================= */
+/* ================================================= */
 
 .hero{
 
     min-height:100vh;
 
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
-    position:relative;
-
-    padding:60px 0;
-
+    padding-top:120px;
+    padding-bottom:60px;
 }
 
 .hero-card{
 
     width:100%;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:50px;
+
+    padding:90px 50px;
 
     background:
     linear-gradient(
@@ -148,22 +304,10 @@ body::after{
 
     backdrop-filter:blur(14px);
 
-    border-radius:50px;
-
-    padding:90px 60px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    border:2px solid rgba(255,255,255,.7);
-
     box-shadow:
-    0 20px 80px rgba(0,0,0,.1);
+    0 20px 80px rgba(0,0,0,.08);
 
 }
-
-/* ANILLO GIRATORIO PREMIUM */
 
 .hero-card::before{
 
@@ -174,18 +318,6 @@ body::after{
     width:900px;
     height:900px;
 
-    background:
-    conic-gradient(
-        from 0deg,
-        transparent,
-        rgba(255,217,59,.6),
-        transparent,
-        rgba(255,152,0,.5),
-        transparent,
-        rgba(116,182,45,.5),
-        transparent
-    );
-
     border-radius:50%;
 
     top:-420px;
@@ -193,8 +325,18 @@ body::after{
 
     transform:translateX(-50%);
 
-    animation:spin 12s linear infinite;
+    background:
+    conic-gradient(
+        transparent,
+        rgba(255,217,59,.5),
+        transparent,
+        rgba(255,152,0,.45),
+        transparent,
+        rgba(116,182,45,.4),
+        transparent
+    );
 
+    animation:spin 12s linear infinite;
 }
 
 .hero-card::after{
@@ -205,14 +347,14 @@ body::after{
 
     inset:6px;
 
+    border-radius:44px;
+
     background:
     linear-gradient(
         180deg,
         rgba(255,255,255,.95),
-        rgba(255,252,240,.94)
+        rgba(255,252,240,.92)
     );
-
-    border-radius:45px;
 
 }
 
@@ -233,8 +375,10 @@ body::after{
 }
 
 .hero-content{
+
     position:relative;
-    z-index:10;
+    z-index:2;
+
     text-align:center;
 }
 
@@ -242,12 +386,10 @@ body::after{
 
     font-size:120px;
 
-    display:inline-block;
-
-    filter:drop-shadow(0 15px 20px rgba(0,0,0,.15));
-
     animation:float 4s ease-in-out infinite;
 
+    filter:
+    drop-shadow(0 15px 25px rgba(0,0,0,.12));
 }
 
 @keyframes float{
@@ -257,7 +399,7 @@ body::after{
     }
 
     50%{
-        transform:translateY(-18px);
+        transform:translateY(-15px);
     }
 
 }
@@ -270,35 +412,34 @@ body::after{
 
     color:var(--marron);
 
-    margin-top:10px;
-
     line-height:1;
+
+    margin-top:10px;
 
     text-shadow:
     5px 5px 0 var(--amarillo),
-    10px 10px 0 rgba(255,152,0,.5);
+    10px 10px 0 rgba(255,152,0,.35);
 
 }
 
 .hero-sub{
 
-    margin-top:25px;
+    margin-top:30px;
 
-    font-size:1.5rem;
+    font-size:1.35rem;
+
+    line-height:1.9;
 
     color:#5f5f5f;
 
-    max-width:900px;
+    max-width:850px;
 
     margin-inline:auto;
-
-    line-height:1.8;
-
 }
 
-/* ========================================= */
-/* STATUS BADGES */
-/* ========================================= */
+/* ================================================= */
+/* BADGES */
+/* ================================================= */
 
 .badges{
 
@@ -307,57 +448,297 @@ body::after{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:18px;
 
+    gap:18px;
 }
 
 .badge{
 
     background:
-    linear-gradient(
-        135deg,
-        rgba(255,255,255,.9),
-        rgba(255,255,255,.75)
-    );
+    rgba(255,255,255,.75);
 
-    border:1px solid rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.5);
 
     backdrop-filter:blur(8px);
 
-    padding:16px 26px;
+    padding:16px 24px;
 
     border-radius:999px;
 
     font-weight:700;
 
     box-shadow:
-    0 10px 20px rgba(0,0,0,.06);
+    0 8px 25px rgba(0,0,0,.05);
 
     transition:.3s;
-
 }
 
 .badge:hover{
 
     transform:
-    translateY(-6px)
-    scale(1.05);
-
+    translateY(-5px)
+    scale(1.04);
 }
 
-/* ========================================= */
-/* OPERATION BELLOTA */
-/* ========================================= */
+/* ================================================= */
+/* BELLOMETRO */
+/* ================================================= */
 
-.operation{
+.bellometro-section{
+
+    padding:40px 0 120px;
+}
+
+.bellometro-container{
+
+    display:grid;
+
+    grid-template-columns:
+    1.2fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+
+    padding:70px;
+
+    border-radius:50px;
 
     position:relative;
 
-    margin-top:120px;
+    overflow:hidden;
 
-    border-radius:55px;
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.92),
+        rgba(255,255,255,.72)
+    );
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+    0 20px 80px rgba(0,0,0,.08);
+
+}
+
+.bellometro-container::before{
+
+    content:"🌰";
+
+    position:absolute;
+
+    right:-40px;
+    bottom:-70px;
+
+    font-size:260px;
+
+    opacity:.05;
+}
+
+.meter-tag{
+
+    display:inline-flex;
+
+    background:
+    rgba(255,152,0,.12);
+
+    color:var(--naranja);
+
+    padding:14px 22px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    margin-bottom:28px;
+}
+
+.bellometro-left h2{
+
+    font-family:'Luckiest Guy', cursive;
+
+    font-size:4rem;
+
+    line-height:1;
+
+    color:var(--marron);
+
+    margin-bottom:25px;
+}
+
+.bellometro-left p{
+
+    font-size:1.18rem;
+
+    line-height:1.9;
+
+    color:#5f5f5f;
+}
+
+/* ================================================= */
+/* STATS */
+/* ================================================= */
+
+.meter-stats{
+
+    margin-top:40px;
+
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.stat-box{
+
+    flex:1;
+
+    min-width:180px;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.05);
+}
+
+.stat-number{
+
+    font-size:2.2rem;
+    font-weight:700;
+
+    color:var(--naranja);
+}
+
+.stat-label{
+
+    margin-top:10px;
+
+    color:#666;
+}
+
+/* ================================================= */
+/* CIRCULAR METER */
+/* ================================================= */
+
+.bellometro-right{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.meter-circle{
+
+    width:360px;
+    height:360px;
+
+    border-radius:50%;
+
+    background:
+    conic-gradient(
+        #ff9800 0%,
+        #ffd93b 57%,
+        rgba(255,255,255,.2) 57%
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+    animation:pulse 4s infinite;
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.03);
+    }
+
+}
+
+.meter-glow{
+
+    position:absolute;
+
+    inset:-20px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,152,0,.25),
+        transparent 70%
+    );
+
+    z-index:-1;
+}
+
+.meter-inner{
+
+    width:270px;
+    height:270px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        145deg,
+        white,
+        #fff6e7
+    );
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+    inset 0 10px 25px rgba(0,0,0,.05);
+}
+
+.meter-percent{
+
+    font-size:5rem;
+    font-weight:700;
+
+    color:var(--naranja);
+
+    line-height:1;
+}
+
+.meter-text{
+
+    margin-top:10px;
+
+    letter-spacing:4px;
+
+    color:#777;
+}
+
+/* ================================================= */
+/* OPERACIÓN BELLOTA */
+/* ================================================= */
+
+.operation{
+
+    margin-top:30px;
+
+    position:relative;
 
     overflow:hidden;
+
+    border-radius:50px;
 
     background:
     linear-gradient(
@@ -369,10 +750,7 @@ body::after{
 
     box-shadow:
     0 25px 80px rgba(255,152,0,.25);
-
 }
-
-/* TEXTURA INTERNA */
 
 .operation::before{
 
@@ -382,13 +760,9 @@ body::after{
     inset:0;
 
     background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 20%),
-    radial-gradient(circle at 80% 40%, rgba(255,255,255,.1), transparent 20%),
-    radial-gradient(circle at 50% 80%, rgba(255,255,255,.08), transparent 25%);
-
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.16), transparent 20%),
+    radial-gradient(circle at 80% 40%, rgba(255,255,255,.1), transparent 20%);
 }
-
-/* BELLOTAS GIGANTES */
 
 .operation::after{
 
@@ -397,77 +771,35 @@ body::after{
     position:absolute;
 
     right:-40px;
-    bottom:-80px;
+    bottom:-70px;
 
-    font-size:320px;
+    font-size:300px;
 
     opacity:.08;
 
     transform:rotate(-15deg);
-
 }
 
 .operation-inner{
 
     position:relative;
-    z-index:3;
+    z-index:2;
 
-    padding:100px 60px;
-}
-
-/* ========================================= */
-/* TITULOS */
-/* ========================================= */
-
-.operation-top{
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:40px;
-    flex-wrap:wrap;
-}
-
-.operation-left{
-    flex:1;
-}
-
-.mission-tag{
-
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-
-    background:rgba(255,255,255,.15);
-
-    border:1px solid rgba(255,255,255,.25);
-
-    padding:14px 22px;
-
-    border-radius:999px;
+    padding:90px 60px;
 
     color:white;
-
-    font-weight:700;
-
-    backdrop-filter:blur(8px);
-
-    margin-bottom:30px;
 }
 
 .operation h2{
 
     font-family:'Luckiest Guy', cursive;
 
-    font-size:clamp(4rem, 8vw, 6rem);
+    font-size:5rem;
 
     line-height:1;
 
-    color:white;
-
     text-shadow:
     5px 5px 0 rgba(0,0,0,.15);
-
 }
 
 .operation p{
@@ -476,55 +808,41 @@ body::after{
 
     max-width:850px;
 
-    color:white;
-
-    font-size:1.35rem;
+    font-size:1.25rem;
 
     line-height:1.9;
-
 }
 
-/* ========================================= */
-/* DONATION PANEL */
-/* ========================================= */
+/* ================================================= */
+/* DONATION CARDS */
+/* ================================================= */
 
 .donation-panel{
 
-    margin-top:70px;
+    margin-top:60px;
 
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit, minmax(260px,1fr));
+    repeat(auto-fit,minmax(260px,1fr));
 
-    gap:28px;
-
+    gap:25px;
 }
 
 .donation-card{
 
     background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,.24),
-        rgba(255,255,255,.12)
-    );
+    rgba(255,255,255,.14);
 
-    border:1px solid rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.2);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(8px);
 
     border-radius:35px;
 
     padding:35px;
 
-    color:white;
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.4s;
+    transition:.35s;
 }
 
 .donation-card:hover{
@@ -534,40 +852,20 @@ body::after{
     scale(1.03);
 
     box-shadow:
-    0 25px 40px rgba(0,0,0,.15);
-
-}
-
-.donation-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    background:rgba(255,255,255,.08);
-
-    border-radius:50%;
-
-    top:-80px;
-    right:-80px;
+    0 20px 40px rgba(0,0,0,.12);
 }
 
 .card-icon{
 
-    font-size:50px;
+    font-size:52px;
 
     margin-bottom:20px;
 }
 
 .card-title{
 
-    font-size:1.7rem;
+    font-size:1.6rem;
     font-weight:700;
-
-    margin-bottom:10px;
 }
 
 .card-price{
@@ -580,44 +878,45 @@ body::after{
 
 .card-desc{
 
-    opacity:.92;
     line-height:1.7;
 }
 
-/* ========================================= */
-/* PREMIUM BUTTONS */
-/* ========================================= */
+/* ================================================= */
+/* BUTTONS */
+/* ================================================= */
 
 .buttons{
 
+    margin-top:60px;
+
     display:flex;
-    gap:25px;
     flex-wrap:wrap;
 
-    margin-top:70px;
+    gap:22px;
 }
 
 .btn{
 
-    position:relative;
+    text-decoration:none;
 
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
     gap:12px;
 
     padding:22px 38px;
 
     border-radius:22px;
 
-    text-decoration:none;
-
-    font-size:1.15rem;
+    font-size:1.1rem;
     font-weight:700;
 
-    transition:.35s;
+    position:relative;
 
     overflow:hidden;
+
+    transition:.35s;
 }
 
 .btn::before{
@@ -641,6 +940,7 @@ body::after{
 }
 
 .btn:hover::before{
+
     transform:translateX(120%);
 }
 
@@ -649,18 +949,6 @@ body::after{
     background:white;
 
     color:#ff9800;
-
-    box-shadow:
-    0 12px 30px rgba(255,255,255,.22);
-
-}
-
-.btn-main:hover{
-
-    transform:
-    translateY(-8px)
-    scale(1.04);
-
 }
 
 .btn-whatsapp{
@@ -668,31 +956,26 @@ body::after{
     background:#25D366;
 
     color:white;
-
-    box-shadow:
-    0 12px 30px rgba(37,211,102,.35);
-
 }
 
-.btn-whatsapp:hover{
+.btn:hover{
 
     transform:
-    translateY(-8px)
+    translateY(-6px)
     scale(1.04);
-
 }
 
-/* ========================================= */
+/* ================================================= */
 /* LIVE STATUS */
-/* ========================================= */
+/* ================================================= */
 
 .live-status{
 
-    margin-top:70px;
+    margin-top:60px;
 
     display:flex;
-    flex-wrap:wrap;
     gap:20px;
+    flex-wrap:wrap;
 }
 
 .live-box{
@@ -704,36 +987,35 @@ body::after{
     background:
     rgba(255,255,255,.12);
 
-    border:1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.18);
 
     border-radius:28px;
 
     padding:28px;
-
-    color:white;
 
     backdrop-filter:blur(8px);
 }
 
 .live-number{
 
-    font-size:2.6rem;
+    font-size:2.5rem;
     font-weight:700;
 }
 
 .live-label{
 
     margin-top:10px;
-    opacity:.9;
+
+    opacity:.92;
 }
 
-/* ========================================= */
+/* ================================================= */
 /* GALLERY */
-/* ========================================= */
+/* ================================================= */
 
 .gallery{
 
-    margin-top:130px;
+    margin-top:120px;
 }
 
 .section-title{
@@ -747,7 +1029,6 @@ body::after{
     color:var(--marron);
 
     margin-bottom:60px;
-
 }
 
 .grid{
@@ -771,41 +1052,50 @@ body::after{
     box-shadow:
     0 20px 50px rgba(0,0,0,.08);
 
-    transition:.4s;
+    transition:.35s;
 }
 
 .card:hover{
 
     transform:
-    translateY(-14px)
+    translateY(-12px)
     rotate(.8deg);
-
 }
 
 .card img{
 
     width:100%;
     height:380px;
+
     object-fit:cover;
+
+    display:block;
 }
 
 .card-content{
-    padding:25px;
+
+    padding:24px;
 }
 
 .card-content p{
 
-    font-size:1.1rem;
+    font-size:1.08rem;
     font-weight:600;
 }
 
-/* ========================================= */
+/* ================================================= */
 /* CTA */
-/* ========================================= */
+/* ================================================= */
 
 .cta{
 
     margin-top:120px;
+
+    border-radius:45px;
+
+    padding:80px 40px;
+
+    text-align:center;
 
     background:
     linear-gradient(
@@ -815,12 +1105,6 @@ body::after{
     );
 
     color:white;
-
-    border-radius:45px;
-
-    padding:80px 40px;
-
-    text-align:center;
 
     position:relative;
 
@@ -835,6 +1119,8 @@ body::after{
 
     width:500px;
     height:500px;
+
+    border-radius:50%;
 
     background:
     radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);
@@ -872,14 +1158,14 @@ body::after{
 
     display:inline-flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
 
     background:
     rgba(255,255,255,.08);
 
-    border:1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.12);
 
-    padding:22px 35px;
+    padding:22px 34px;
 
     border-radius:25px;
 
@@ -889,9 +1175,9 @@ body::after{
     backdrop-filter:blur(8px);
 }
 
-/* ========================================= */
+/* ================================================= */
 /* FOOTER */
-/* ========================================= */
+/* ================================================= */
 
 footer{
 
@@ -900,54 +1186,161 @@ footer{
     text-align:center;
 
     color:#8a7d73;
-
-    font-size:1rem;
 }
 
-/* ========================================= */
+/* ================================================= */
 /* RESPONSIVE */
-/* ========================================= */
+/* ================================================= */
 
-@media(max-width:768px){
+@media(max-width:950px){
 
-    .hero-card{
-        padding:60px 25px;
+    .bellometro-container{
+
+        grid-template-columns:1fr;
+
+        padding:50px 25px;
     }
 
     .operation-inner{
+
         padding:70px 25px;
     }
 
     .operation h2{
+
         font-size:3.5rem;
     }
 
-    .section-title{
+    .bellometro-left h2{
+
         font-size:3rem;
     }
 
-    .cta h3{
-        font-size:2.2rem;
+    .section-title{
+
+        font-size:3rem;
     }
 
-    .number{
-        font-size:1.2rem;
+    .meter-circle{
+
+        width:290px;
+        height:290px;
+    }
+
+    .meter-inner{
+
+        width:220px;
+        height:220px;
+    }
+
+    .meter-percent{
+
+        font-size:4rem;
+    }
+
+    .header-nav{
+
+        display:none;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero-card{
+
+        padding:70px 25px;
     }
 
     .buttons{
+
         flex-direction:column;
     }
 
     .btn{
+
         width:100%;
+    }
+
+    .hero h1{
+
+        font-size:4rem;
+    }
+
+    .cta h3{
+
+        font-size:2.1rem;
+    }
+
+    .number{
+
+        font-size:1.2rem;
+    }
+
+    .top-header{
+
+        padding:15px 18px;
+    }
+
+    .header-logo{
+
+        font-size:.95rem;
+    }
+
+    .header-cta{
+
+        padding:12px 18px;
+        font-size:.9rem;
     }
 
 }
 
 </style>
+
 </head>
 
 <body>
+
+<!-- BELLOTAS FLOTANTES -->
+
+<div class="floating-acorns">
+
+    <span>🌰</span>
+    <span>🐿️</span>
+    <span>🌰</span>
+    <span>✨</span>
+    <span>🌰</span>
+    <span>🐿️</span>
+
+</div>
+
+<!-- HEADER -->
+
+<header class="top-header">
+
+    <div class="header-logo">
+        🐿️ OPERACIÓN BELLOTA
+    </div>
+
+    <nav class="header-nav">
+
+        <a href="#bellometro">📊 Bellómetro</a>
+        <a href="#donar">🌰 Donar</a>
+        <a href="#galeria">📸 Galería</a>
+        <a href="#contacto">📡 Contacto</a>
+
+    </nav>
+
+    <a
+    href="https://wa.me/56945450443?text=Hola%20🐿️%20quiero%20donar%20a%20la%20Operación%20Bellota%20🌰"
+    target="_blank"
+    class="header-cta">
+
+        💚 DONAR
+
+    </a>
+
+</header>
 
 <div class="container">
 
@@ -959,7 +1352,9 @@ footer{
 
 <div class="hero-content">
 
-<div class="logo">🐿️</div>
+<div class="logo">
+🐿️
+</div>
 
 <h1>
 OPERACIÓN<br>
@@ -967,10 +1362,11 @@ BELLOTA
 </h1>
 
 <p class="hero-sub">
+
 El centro oficial de abastecimiento táctico del legendario
 <strong>Rodrigo “Ardillón” Rodríguez</strong>.
-Cada donación fortalece la madriguera,
-incrementa las reservas de bellotas y mantiene viva la energía ardillística.
+Cada aporte fortalece la madriguera y mantiene vivas las reservas de bellotas premium.
+
 </p>
 
 <div class="badges">
@@ -999,19 +1395,105 @@ incrementa las reservas de bellotas y mantiene viva la energía ardillística.
 
 </section>
 
-<!-- OPERATION BELLOTA -->
+<!-- BELLOMETRO -->
 
-<section class="operation">
+<section class="bellometro-section" id="bellometro">
+
+<div class="bellometro-container">
+
+<div class="bellometro-left">
+
+<div class="meter-tag">
+📊 ESTADO ACTUAL DE LA OPERACIÓN
+</div>
+
+<h2>
+BELLÓMETRO
+TACTICO
+</h2>
+
+<p>
+
+Las reservas oficiales de bellotas se encuentran al
+<strong>57%</strong>.
+Cada donación ayuda a mantener la operación funcionando
+y permite expandir la infraestructura ardillística premium.
+
+</p>
+
+<div class="meter-stats">
+
+<div class="stat-box">
+
+<div class="stat-number">
+57%
+</div>
+
+<div class="stat-label">
+Bellotas recolectadas
+</div>
+
+</div>
+
+<div class="stat-box">
+
+<div class="stat-number">
+143
+</div>
+
+<div class="stat-label">
+Donadores tácticos
+</div>
+
+</div>
+
+<div class="stat-box">
+
+<div class="stat-number">
+∞
+</div>
+
+<div class="stat-label">
+Capacidad de bellotas
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="bellometro-right">
+
+<div class="meter-circle">
+
+<div class="meter-glow"></div>
+
+<div class="meter-inner">
+
+<div class="meter-percent">
+57%
+</div>
+
+<div class="meter-text">
+COMPLETADO
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- OPERACION -->
+
+<section class="operation" id="donar">
 
 <div class="operation-inner">
-
-<div class="operation-top">
-
-<div class="operation-left">
-
-<div class="mission-tag">
-🛰️ MISIÓN GLOBAL ACTIVA
-</div>
 
 <h2>
 FINANCIA<br>
@@ -1019,23 +1501,20 @@ LA MADRIGUERA
 </h2>
 
 <p>
-Las reservas de bellotas están bajando rápidamente.
-Cada aporte ayuda a mantener la operación funcionando:
-contenido, memes, energía, hidratación táctica y expansión oficial
-de la infraestructura ardillística.
+
+Las reservas tácticas están bajando rápidamente.
+Cada aporte ayuda a mantener la energía del Ardillón,
+la producción de contenido y el abastecimiento estratégico de bellotas.
+
 </p>
-
-</div>
-
-</div>
-
-<!-- DONATION CARDS -->
 
 <div class="donation-panel">
 
 <div class="donation-card">
 
-<div class="card-icon">🌰</div>
+<div class="card-icon">
+🌰
+</div>
 
 <div class="card-title">
 Bellota Básica
@@ -1046,15 +1525,16 @@ $1.000
 </div>
 
 <div class="card-desc">
-Aporte inicial para mantener la energía del Ardillón estable.
-Ideal para verdaderos aliados de la madriguera.
+Apoyo inicial para mantener viva la operación.
 </div>
 
 </div>
 
 <div class="donation-card">
 
-<div class="card-icon">🌟</div>
+<div class="card-icon">
+🌟
+</div>
 
 <div class="card-title">
 Bellota Dorada
@@ -1065,14 +1545,16 @@ $5.000
 </div>
 
 <div class="card-desc">
-Desbloquea apoyo premium y aumenta significativamente las reservas tácticas.
+Aporte premium para fortalecer la madriguera.
 </div>
 
 </div>
 
 <div class="donation-card">
 
-<div class="card-icon">🚀</div>
+<div class="card-icon">
+🚀
+</div>
 
 <div class="card-title">
 Bellota Nuclear
@@ -1083,39 +1565,34 @@ $10.000+
 </div>
 
 <div class="card-desc">
-Nivel legendario.
-Acceso honorífico al consejo supremo de la madriguera.
+Nivel legendario de apoyo ardillístico.
 </div>
 
 </div>
 
 </div>
-
-<!-- BUTTONS -->
 
 <div class="buttons">
 
 <a
-href="https://wa.me/56945450443?text=Hola%20Ardillón%20🐿️%20quiero%20aportar%20a%20la%20Operación%20Bellota%20🌰"
+href="https://wa.me/56945450443?text=Hola%20🐿️%20quiero%20donar%20a%20la%20Operación%20Bellota%20🌰"
 target="_blank"
 class="btn btn-whatsapp">
 
-💚 Donar Directamente por WhatsApp
+💚 Donar por WhatsApp
 
 </a>
 
 <a
-href="https://wa.me/56945450443?text=Hola%20Ardillón%20🌟%20quiero%20hacer%20una%20SUPER%20DONACIÓN"
+href="https://wa.me/56945450443?text=Hola%20🌟%20quiero%20hacer%20una%20SUPER%20DONACIÓN"
 target="_blank"
 class="btn btn-main">
 
-🌰 Activar Súper Bellota
+🌰 Súper Bellota
 
 </a>
 
 </div>
-
-<!-- LIVE STATUS -->
 
 <div class="live-status">
 
@@ -1138,7 +1615,7 @@ Nivel de hambre de bellotas
 </div>
 
 <div class="live-label">
-Operación ardillística activa
+Operación activa
 </div>
 
 </div>
@@ -1150,7 +1627,7 @@ Operación ardillística activa
 </div>
 
 <div class="live-label">
-Capacidad de almacenar bellotas
+Capacidad táctica
 </div>
 
 </div>
@@ -1163,22 +1640,22 @@ Capacidad de almacenar bellotas
 
 <!-- GALLERY -->
 
-<section class="gallery">
+<section class="gallery" id="galeria">
 
 <h2 class="section-title">
-Momentos Históricos del Ardillón
+Momentos del Ardillón
 </h2>
 
 <div class="grid">
 
 <div class="card">
 
-<img src="https://i.postimg.cc/5tVSzN2L/Whats-App-Image-2026-05-19-at-12-13-07-PM.jpg">
+<img src="https://i.postimg.cc/5tVSzN2L/Whats-App-Image-2026-05-19-at-12-13-07-PM.jpg" alt="Rodrigo 1">
 
 <div class="card-content">
 
 <p>
-📱 Coordinando abastecimientos secretos de bellotas.
+📱 Coordinando operaciones secretas de bellotas.
 </p>
 
 </div>
@@ -1187,12 +1664,12 @@ Momentos Históricos del Ardillón
 
 <div class="card">
 
-<img src="https://i.postimg.cc/YCfmJNtF/Whats-App-Image-2026-05-19-at-12-14-35-PM.jpg">
+<img src="https://i.postimg.cc/YCfmJNtF/Whats-App-Image-2026-05-19-at-12-14-35-PM.jpg" alt="Rodrigo 2">
 
 <div class="card-content">
 
 <p>
-🏠 Descansando estratégicamente dentro de la madriguera.
+🏠 Descansando estratégicamente en la madriguera.
 </p>
 
 </div>
@@ -1201,7 +1678,7 @@ Momentos Históricos del Ardillón
 
 <div class="card">
 
-<img src="https://i.postimg.cc/x1J0WMMN/Whats-App-Image-2026-05-19-at-12-18-49-PM.jpg">
+<img src="https://i.postimg.cc/x1J0WMMN/Whats-App-Image-2026-05-19-at-12-18-49-PM.jpg" alt="Rodrigo 3">
 
 <div class="card-content">
 
@@ -1219,14 +1696,14 @@ Momentos Históricos del Ardillón
 
 <!-- CTA -->
 
-<section class="cta">
+<section class="cta" id="contacto">
 
 <h3>
-📡 CONTACTO DIRECTO
+📡 CONTACTO OFICIAL
 </h3>
 
 <p>
-La central oficial de comunicaciones de la Operación Bellota está disponible.
+Central oficial de comunicaciones de la Operación Bellota.
 </p>
 
 <div class="number">
