@@ -1,303 +1,576 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rodrigo "Ardillón" Rodríguez — ¡La Madriguera Alegre! 🌰</title>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Chango&family=Fredoka+One&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        /* ===== VARIABLES Y ESTILOS BASE ===== */
-        :root {
-            --color-verde-primavera: #7CB342;
-            --color-amarillo-sol: #FDD835;
-            --color-naranja-alegre: #FF9800;
-            --color-marron-bellota: #8D6E63;
-            --color-marron-oscuro: #5D4037;
-            --color-crema-fondo: #FFFDE7;
-            --fuente-titulo: 'Chango', cursive;
-            --fuente-subtitulo: 'Luckiest Guy', cursive;
-            --fuente-botones: 'Fredoka One', cursive;
-            --fuente-cuerpo: 'Open Sans', sans-serif;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>Rodrigo "Ardillón" Rodríguez 🌰🐿️</title>
 
-        body {
-            background-color: var(--color-crema-fondo);
-            /* Patrón de fondo superalegre y dinámico */
-            background-image: 
-                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNGRDgzNSIgZmlsbC1vcGFjaXR5PSIwLjA5Ij48cGF0aCBkPSJNMCAwaDYwdjYwSDBWMnpNMjAgMjBoMjB2MjBIMlYyMHpNMCAyMGgyMHYyMEgwVjIwek0yMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4='),
-                radial-gradient(circle at 10% 20%, rgba(124, 179, 66, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 152, 0, 0.1) 0%, transparent 40%);
-            color: var(--color-marron-oscuro);
-            font-family: var(--fuente-cuerpo);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
 
-        /* ===== CONTENEDOR PRINCIPAL ===== */
-        .madriguera-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 80px;
-        }
+<style>
 
-        /* ===== HERO SECTION (CABECERA) ===== */
-        .hero {
-            text-align: center;
-            background: white;
-            padding: 80px 40px;
-            border-radius: 50px;
-            box-shadow: 0 20px 0 var(--color-amarillo-sol), 0 30px 60px rgba(0,0,0,0.1);
-            border: 8px solid var(--color-verde-primavera);
-            position: relative;
-        }
+:root{
+    --verde:#7CB342;
+    --amarillo:#FDD835;
+    --naranja:#FF9800;
+    --marron:#5D4037;
+    --crema:#FFFBEA;
+    --blanco:#ffffff;
+}
 
-        /* Animación sutil de rebote en el hero */
-        @keyframes hero-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .hero { animation: hero-bounce 4s ease-in-out infinite; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .logo-ardilla {
-            font-size: 100px;
-            margin-bottom: 20px;
-            display: block;
-        }
+body{
+    font-family:'Fredoka', sans-serif;
+    background:
+    radial-gradient(circle at top left, rgba(255,152,0,.15), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(124,179,66,.15), transparent 30%),
+    var(--crema);
 
-        .titulo-principal {
-            font-family: var(--fuente-titulo);
-            font-size: 70px;
-            color: var(--color-marron-oscuro);
-            text-shadow: 4px 4px 0 var(--color-amarillo-sol), 8px 8px 0 var(--color-naranja-alegre);
-            line-height: 1.1;
-            margin-bottom: 15px;
-        }
+    overflow-x:hidden;
+    color:var(--marron);
+}
 
-        .subtitulo {
-            font-family: var(--fuente-subtitulo);
-            font-size: 32px;
-            color: var(--color-verde-primavera);
-            letter-spacing: 2px;
-            background: rgba(124, 179, 66, 0.1);
-            display: inline-block;
-            padding: 10px 30px;
-            border-radius: 50px;
-            margin-top: 15px;
-        }
+/* ===== FONDO ANIMADO ===== */
 
-        /* ===== GALERÍA DE FOTOS DINÁMICA ===== */
-        .galeria-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+body::before{
+    content:"🌰 🌰 🌰 🌰 🌰";
+    position:fixed;
+    top:-100px;
+    left:-20%;
+    width:140%;
+    font-size:40px;
+    opacity:.08;
+    animation:floatBg 25s linear infinite;
+    pointer-events:none;
+}
 
-        .seccion-titulo {
-            font-family: var(--fuente-subtitulo);
-            font-size: 48px;
-            color: var(--color-marron-oscuro);
-            text-align: center;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            position: relative;
-        }
-        .seccion-titulo::after {
-            content: '🌰🐿️🌰';
-            position: absolute;
-            bottom: -25px; left: 50%;
-            transform: translateX(-50%);
-            font-size: 20px;
-        }
+@keyframes floatBg{
+    from{
+        transform:translateY(0) rotate(0deg);
+    }
+    to{
+        transform:translateY(120vh) rotate(360deg);
+    }
+}
 
-        .fotos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            width: 100%;
-        }
+/* ===== CONTENEDOR ===== */
 
-        .foto-card {
-            background: white;
-            padding: 20px;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 4px solid #F0F0F0;
-            position: relative;
-            overflow: hidden;
-        }
+.container{
+    width:min(1200px, 92%);
+    margin:auto;
+    padding:40px 0 80px;
+}
 
-        .foto-card:hover {
-            transform: translateY(-15px) scale(1.03) rotate(2deg);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            border-color: var(--color-amarillo-sol);
-        }
+/* ===== HERO ===== */
 
-        .foto-card img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 20px;
-            display: block;
-        }
+.hero{
+    position:relative;
+    background:white;
+    border-radius:40px;
+    padding:70px 30px;
+    text-align:center;
+    overflow:hidden;
 
-        .foto-caption {
-            font-family: var(--fuente-cuerpo);
-            font-weight: 600;
-            font-size: 18px;
-            text-align: center;
-            margin-top: 20px;
-            color: var(--color-marron-oscuro);
-        }
+    border:6px solid var(--verde);
 
-        /* ===== SECCIÓN DE DONACIONES (OPERACIÓN BELLOTA) ===== */
-        .donaciones {
-            background: var(--color-naranja-alegre);
-            color: white;
-            padding: 80px 40px;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 0 15px 0 var(--color-marron-oscuro), 0 30px 60px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
+    box-shadow:
+    0 15px 0 var(--amarillo),
+    0 30px 60px rgba(0,0,0,.12);
 
-        /* Decoración de fondo de bellotas en las donaciones */
-        .donaciones::before {
-            content: '🌰';
-            position: absolute;
-            font-size: 200px;
-            opacity: 0.1;
-            top: -50px; left: -50px;
-            transform: rotate(-30deg);
-        }
-        .donaciones::after {
-            content: '🌰';
-            position: absolute;
-            font-size: 150px;
-            opacity: 0.1;
-            bottom: -40px; right: -40px;
-            transform: rotate(20deg);
-        }
+    animation:heroFloat 5s ease-in-out infinite;
+}
 
-        .titulo-donaciones {
-            font-family: var(--fuente-titulo);
-            font-size: 50px;
-            text-shadow: 3px 3px 0 var(--color-marron-oscuro);
-            margin-bottom: 20px;
-        }
+@keyframes heroFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
 
-        .texto-donaciones {
-            font-size: 20px;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+/* EFECTO GIRATORIO HEADER */
 
-        .botones-donar {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
 
-        .btn-donar {
-            font-family: var(--fuente-botones);
-            font-size: 22px;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 0 rgba(0,0,0,0.2);
-            border: none;
-            cursor: pointer;
-        }
+    background:
+    conic-gradient(
+        transparent,
+        rgba(255,152,0,.4),
+        transparent,
+        rgba(124,179,66,.4),
+        transparent
+    );
 
-        .btn-donar:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 0 rgba(0,0,0,0.2);
-        }
-        .btn-donar:active {
-            transform: translateY(2px);
-            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
-        }
+    top:-220px;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:50%;
 
-        .btn-bellota {
-            background-color: var(--color-amarillo-sol);
-            color: var(--color-marron-oscuro);
-        }
-        .btn-super-bellota {
-            background-color: white;
-            color: var(--color-naranja-alegre);
-        }
+    animation:spin 8s linear infinite;
+}
 
-        /* ===== CTA SECTION (CONTACTO) ===== */
-        .cta {
-            text-align: center;
-            background: var(--color-marron-oscuro);
-            color: white;
-            padding: 60px 40px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:8px;
+    background:white;
+    border-radius:35px;
+}
 
-        .titulo-cta {
-            font-family: var(--fuente-subtitulo);
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--color-amarillo-sol);
-        }
+@keyframes spin{
+    from{
+        transform:translateX(-50%) rotate(0deg);
+    }
+    to{
+        transform:translateX(-50%) rotate(360deg);
+    }
+}
 
-        .numero-contacto {
-            font-family: var(--fuente-botones);
-            font-size: 40px;
-            color: white;
-            background: rgba(255,255,255,0.1);
-            padding: 15px 30px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-top: 15px;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-        }
+.hero-content{
+    position:relative;
+    z-index:2;
+}
 
-        /* ===== PIE DE PÁGINA "LA MADRIGUERA FINALE" ===== */
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: var(--color-marron-bellota);
-            font-size: 14px;
-            border-top: 2px dashed var(--color-marron-bellota);
-            margin-top: auto;
-        }
+.logo{
+    font-size:90px;
+    display:inline-block;
+    animation:shake 3s ease-in-out infinite;
+}
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .titulo-principal { font-size: 40px; }
-            .subtitulo { font-size: 20px; }
-            .logo-ardilla { font-size: 60px; }
-            .seccion-titulo { font-size: 32px; }
-            .titulo-donaciones { font-size: 36px; }
-            .numero-contacto { font-size: 28px; }
-        }
+@keyframes shake{
+    0%,100%{ transform:rotate(0deg); }
+    25%{ transform:rotate(-8deg); }
+    50%{ transform:rotate(8deg); }
+    75%{ transform:rotate(-5deg); }
+}
 
-    </style>
+.hero h1{
+    font-family:'Luckiest Guy', cursive;
+    font-size:clamp(3rem, 8vw, 5rem);
+
+    margin-top:10px;
+
+    color:var(--marron);
+
+    text-shadow:
+    4px 4px 0 var(--amarillo),
+    8px 8px 0 rgba(255,152,0,.7);
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:1.4rem;
+    font-weight:600;
+    color:var(--verde);
+}
+
+/* ===== BADGES ===== */
+
+.badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:35px;
+}
+
+.badge{
+    background:rgba(255,152,0,.1);
+    color:var(--marron);
+
+    border:2px solid rgba(255,152,0,.2);
+
+    padding:12px 20px;
+    border-radius:999px;
+    font-weight:700;
+
+    backdrop-filter:blur(5px);
+}
+
+/* ===== GALERÍA ===== */
+
+.section-title{
+    text-align:center;
+    margin:80px 0 50px;
+    font-size:3rem;
+    font-family:'Luckiest Guy', cursive;
+    color:var(--marron);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.45s;
+}
+
+.card:hover{
+    transform:
+    translateY(-12px)
+    rotate(1deg)
+    scale(1.02);
+
+    box-shadow:0 25px 45px rgba(0,0,0,.15);
+}
+
+.card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content p{
+    font-size:1.1rem;
+    font-weight:600;
+}
+
+/* ===== DONACIONES ===== */
+
+.donaciones{
+    margin-top:90px;
+
+    background:linear-gradient(
+    135deg,
+    #ff9800,
+    #ffb300
+    );
+
+    color:white;
+
+    border-radius:40px;
+
+    padding:70px 30px;
+
+    text-align:center;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:
+    0 15px 0 #a45d00,
+    0 30px 60px rgba(0,0,0,.15);
+}
+
+.donaciones::before{
+    content:"🌰";
+    position:absolute;
+    font-size:220px;
+    opacity:.08;
+    top:-40px;
+    left:-30px;
+    transform:rotate(-20deg);
+}
+
+.donaciones h2{
+    position:relative;
+    z-index:2;
+
+    font-size:3.5rem;
+    font-family:'Luckiest Guy', cursive;
+
+    text-shadow:4px 4px 0 rgba(0,0,0,.2);
+}
+
+.donaciones p{
+    position:relative;
+    z-index:2;
+
+    max-width:800px;
+    margin:25px auto;
+
+    font-size:1.2rem;
+    line-height:1.7;
+}
+
+/* ===== BOTONES ===== */
+
+.botones{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.btn{
+    text-decoration:none;
+    border:none;
+
+    padding:18px 35px;
+    border-radius:999px;
+
+    font-size:1.1rem;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.2);
+
+    transform:translateX(-100%);
+    transition:.4s;
+}
+
+.btn:hover::before{
+    transform:translateX(100%);
+}
+
+.btn:hover{
+    transform:translateY(-6px) scale(1.04);
+}
+
+.btn-whatsapp{
+    background:#25D366;
+    color:white;
+
+    box-shadow:
+    0 8px 0 #168c45;
+}
+
+.btn-whatsapp:hover{
+    box-shadow:
+    0 14px 0 #168c45;
+}
+
+.btn-dorado{
+    background:white;
+    color:#ff9800;
+
+    box-shadow:
+    0 8px 0 #d5d5d5;
+}
+
+/* ===== CTA ===== */
+
+.cta{
+    margin-top:80px;
+
+    background:var(--marron);
+
+    color:white;
+
+    border-radius:40px;
+
+    padding:60px 20px;
+
+    text-align:center;
+}
+
+.cta h3{
+    font-size:2.3rem;
+    margin-bottom:15px;
+    color:var(--amarillo);
+}
+
+.numero{
+    margin-top:25px;
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.08);
+
+    padding:18px 28px;
+
+    border-radius:20px;
+
+    font-size:2rem;
+    font-weight:700;
+
+    letter-spacing:2px;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    text-align:center;
+    padding:50px 20px 20px;
+    opacity:.7;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+
+    .hero{
+        padding:50px 20px;
+    }
+
+    .logo{
+        font-size:65px;
+    }
+
+    .section-title{
+        font-size:2.2rem;
+    }
+
+    .donaciones h2{
+        font-size:2.5rem;
+    }
+
+    .numero{
+        font-size:1.3rem;
+    }
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="madriguera-container">
+<div class="container">
 
-        <header class="hero">
-            <span class="logo-ardilla">🐿️</span>
-            <div class="titulo-principal">Rodrigo Rodríguez</div>
-            <div class="subtitulo">¡El Único e Inigualable Ard
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="logo">🐿️</div>
+
+            <h1>Rodrigo "Ardillón"</h1>
+
+            <p>El recolector oficial de bellotas premium 🌰</p>
+
+            <div class="badges">
+                <div class="badge">🌰 Energía Ardillística</div>
+                <div class="badge">🐿️ Madriguera VIP</div>
+                <div class="badge">🔥 Nivel Legendario</div>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- GALERÍA -->
+
+    <h2 class="section-title">
+        El Álbum del Ardillón
+    </h2>
+
+    <section class="grid">
+
+        <div class="card">
+            <img src="https://i.postimg.cc/5tVSzN2L/Whats-App-Image-2026-05-19-at-12-13-07-PM.jpg">
+            <div class="card-content">
+                <p>Coordinando operaciones secretas de bellotas 📱🌰</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.postimg.cc/YCfmJNtF/Whats-App-Image-2026-05-19-at-12-14-35-PM.jpg">
+            <div class="card-content">
+                <p>Modo “Madriguera Chill” activado 🏠✨</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.postimg.cc/x1J0WMMN/Whats-App-Image-2026-05-19-at-12-18-49-PM.jpg">
+            <div class="card-content">
+                <p>Una nueva evolución del Ardillón 🐿️⚡</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.postimg.cc/90ghkQfx/Whats-App-Image-2026-05-19-at-12-18-49-PM222.jpg">
+            <div class="card-content">
+                <p>“Necesito más bellotas…” 🌰👀</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- DONACIONES -->
+
+    <section class="donaciones">
+
+        <h2>¡Operación Bellota! 🌰</h2>
+
+        <p>
+            Ayuda al Ardillón a mantener abastecida la madriguera.
+            Cada aporte desbloquea más energía, más memes y más contenido legendario.
+        </p>
+
+        <div class="botones">
+
+            <!-- CAMBIA EL NÚMERO POR EL REAL -->
+            <a
+            href="https://wa.me/56945450443?text=Hola%20Ardillón%20🐿️%20quiero%20enviarte%20una%20donación%20🌰"
+            target="_blank"
+            class="btn btn-whatsapp">
+                Donar por WhatsApp 💚
+            </a>
+
+            <a
+            href="https://wa.me/56945450443?text=Hola%20Ardillón%20🌟%20quiero%20mandarte%20una%20SUPER%20BELLOTA"
+            target="_blank"
+            class="btn btn-dorado">
+                Súper Bellota 🌟
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <h3>📞 Contacto Oficial del Ardillón</h3>
+
+        <p>
+            ¿Quieres enviar una bellota real?
+            Escríbele directamente aquí:
+        </p>
+
+        <div class="numero">
+            +56 9 4545 0443
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    <p>
+        Página oficial de fans de Rodrigo "Ardillón" Rodríguez 🌰🐿️
+    </p>
+</footer>
+
+</body>
+</html>
